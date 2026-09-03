@@ -1,3 +1,7 @@
+const DOWNLOAD_URL = "/downloads/clide-0.1.0-apple-silicon.dmg";
+const DOWNLOAD_SHA256 =
+  "ceffbbfe7a854bc9eccee0f27c63b7f7b4624f060042eae156124e0add4898b1";
+
 export default function Home() {
   return (
     <>
@@ -20,6 +24,7 @@ export default function Home() {
                 <rect x="10.8" y="8.5" width="2.4" height="12" rx="1.2" fill="currentColor" />
                 <rect x="15.1" y="5.5" width="2.4" height="18" rx="1.2" fill="currentColor" />
                 <rect x="19.4" y="9.5" width="2.4" height="10" rx="1.2" fill="currentColor" />
+                <rect x="23.7" y="13" width="2.4" height="3" rx="1.2" fill="currentColor" />
               </svg>
             </span>
             <span className="brand-word">clide</span>
@@ -50,6 +55,7 @@ export default function Home() {
                 <rect x="10.8" y="8.5" width="2.4" height="12" rx="1.2" fill="currentColor" />
                 <rect x="15.1" y="5.5" width="2.4" height="18" rx="1.2" fill="currentColor" />
                 <rect x="19.4" y="9.5" width="2.4" height="10" rx="1.2" fill="currentColor" />
+                <rect x="23.7" y="13" width="2.4" height="3" rx="1.2" fill="currentColor" />
               </svg>
             </span>
             <span className="brand-word">clide</span>
@@ -61,7 +67,7 @@ export default function Home() {
           </button>
         </div>
         <div className="mobile-menu-body">
-          <a className="mobile-menu-item" href="https://github.com/staraepp/clide_stt/releases/latest" target="_blank" rel="noreferrer">Download</a>
+          <a className="mobile-menu-item" href={DOWNLOAD_URL} download>Download</a>
           <a className="mobile-menu-item" href="#get-started">Docs</a>
           <a className="mobile-menu-item" href="#design-approach">How it works</a>
           <a className="mobile-menu-item" href="#models">Models</a>
@@ -96,12 +102,12 @@ export default function Home() {
                 </p>
                 <p>
                   shortcut → capture → transcribe → process → insert → history.
-                  Rust owns the microphone, Accessibility, Keychain, and SQLite;
+                  Rust owns the microphone, Accessibility, credentials, and SQLite;
                   React owns the pixels.
                 </p>
               </div>
               <div className="hero-ctas reveal" style={{ transitionDelay: ".3s" }}>
-                <a className="btn btn-primary" href="https://github.com/staraepp/clide_stt/releases/latest" target="_blank" rel="noreferrer">
+                <a className="btn btn-primary" href={DOWNLOAD_URL} download>
                   <svg width="15" height="15" viewBox="0 0 16 16" fill="none" aria-hidden="true">
                     <path d="M8 2v7.5M8 9.5L4.7 6.2M8 9.5l3.3-3.3" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round" />
                     <path d="M2.5 11.5v1.2a1.3 1.3 0 001.3 1.3h8.4a1.3 1.3 0 001.3-1.3v-1.2" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round" />
@@ -168,14 +174,14 @@ export default function Home() {
                   <div className="cmd-line app-steps is-hidden" id="cmd-quick">
                     <span className="p">1 · </span>npm install<br />
                     <span className="p">2 · </span>npm run app:build -- --debug --bundles app<br />
-                    <span className="p">3 · </span>open src-tauri/target/debug/bundle/macos/Clide.app
+                    <span className="p">3 · </span>open src-tauri/target/debug/bundle/macos/clide.app
                   </div>
                 </div>
               </div>
             </div>
 
             <div className="hero-ctas-mobile">
-              <a className="btn btn-primary" href="https://github.com/staraepp/clide_stt/releases/latest" target="_blank" rel="noreferrer">
+              <a className="btn btn-primary" href={DOWNLOAD_URL} download>
                 <svg width="15" height="15" viewBox="0 0 16 16" fill="none" aria-hidden="true">
                   <path d="M8 2v7.5M8 9.5L4.7 6.2M8 9.5l3.3-3.3" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round" />
                   <path d="M2.5 11.5v1.2a1.3 1.3 0 001.3 1.3h8.4a1.3 1.3 0 001.3-1.3v-1.2" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round" />
@@ -270,9 +276,9 @@ export default function Home() {
               </div>
               <h3 className="t-title">Bring your own key</h3>
               <p>
-                Transcription runs on Groq — whisper-large-v3-turbo or
-                whisper-large-v3 — with your API key stored in the macOS Keychain.
-                A provider adapter leaves room for more engines.
+                Choose from eight engines: Apple Speech, five cloud providers,
+                local Whisper, and local Parakeet. Cloud credentials stay in a
+                user-only file and never enter history or logs.
               </p>
             </div>
 
@@ -289,8 +295,9 @@ export default function Home() {
               </div>
               <h3 className="t-title">Deterministic processing</h3>
               <p>
-                Verbatim and Polished passes run locally, deterministically — no
-                LLM rewrite guessing at your meaning. Audio is never stored.
+                Verbatim and Polished run locally and deterministically. Rewrite
+                uses Apple Intelligence on-device, with the polished transcript
+                preserved if refinement is unavailable.
               </p>
             </div>
 
@@ -305,8 +312,9 @@ export default function Home() {
               </div>
               <h3 className="t-title">Insert anywhere</h3>
               <p>
-                Text lands through the Accessibility API, falling back to clipboard
-                paste with full clipboard restore — nothing you copied is lost.
+                Every finished transcript is copied to the clipboard, then inserted
+                through Accessibility or a targeted Cmd+V into the app where you
+                started speaking.
               </p>
             </div>
 
@@ -321,7 +329,8 @@ export default function Home() {
               <h3 className="t-title">Searchable history</h3>
               <p>
                 Every dictation lands in a local SQLite database with FTS5
-                full-text search. Text only — audio is never written to disk.
+                full-text search. Temporary audio is deleted when the transaction
+                completes, is cancelled, or expires.
               </p>
             </div>
 
@@ -332,30 +341,31 @@ export default function Home() {
                   <path d="M37 36h16M49 36v7M43 36v5" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" />
                 </svg>
               </div>
-              <h3 className="t-title">Keychain credentials</h3>
+              <h3 className="t-title">Local credentials</h3>
               <p>
-                Your Groq API key lives in the macOS Keychain, not a config file —
-                requests go straight from your machine to Groq.
+                BYOK credentials stay outside SQLite, UI state, history, and logs
+                in a user-only local file. Requests go directly from your Mac to
+                the provider you selected.
               </p>
             </div>
           </div>
 
           <div className="stats-grid reveal-3d" style={{ transitionDelay: ".32s" }}>
             <div className="stat-item">
-              <span className="stat-number" data-count-to="300" data-suffix="ms">0</span>
-              <span className="stat-label">Median latency</span>
+              <span className="stat-number" data-count-to="8">0</span>
+              <span className="stat-label">Transcription engines</span>
             </div>
             <div className="stat-item">
-              <span className="stat-number" data-count-to="99.2" data-decimals="1" data-suffix="%">0</span>
-              <span className="stat-label">Transcription accuracy</span>
+              <span className="stat-number" data-count-to="36">0</span>
+              <span className="stat-label">Downloadable local models</span>
+            </div>
+            <div className="stat-item">
+              <span className="stat-number" data-count-to="3">0</span>
+              <span className="stat-label">Processing modes</span>
             </div>
             <div className="stat-item">
               <span className="stat-number" data-count-to="0" data-suffix=" bytes">0</span>
-              <span className="stat-label">Audio stored — text only</span>
-            </div>
-            <div className="stat-item">
-              <span className="stat-number" data-count-to="100" data-suffix="%">0</span>
-              <span className="stat-label">Free &amp; open source</span>
+              <span className="stat-label">Audio retained after completion</span>
             </div>
           </div>
         </section>
@@ -367,8 +377,8 @@ export default function Home() {
               <span>Design approach</span>
             </span>
             <h2 className="t-h1" style={{ marginTop: 16 }}>
-              {"Every word is accurate.\nEvery byte stays "}
-              <span className="accent-word">local</span>.
+              {"Local when you want it.\nExplicit when it "}
+              <span className="accent-word">leaves</span>.
             </h2>
           </div>
 
@@ -386,7 +396,7 @@ export default function Home() {
                 </div>
                 <p>
                   The microphone, the global shortcut, provider requests,
-                  Accessibility insertion, the Keychain, and SQLite all live in
+                  Accessibility insertion, credential storage, and SQLite all live in
                   Rust. React owns presentation only — a clean split you can read
                   end to end.
                 </p>
@@ -408,9 +418,9 @@ export default function Home() {
                   <h3>Private by default</h3>
                 </div>
                 <p>
-                  History is a local SQLite database with FTS5 full-text search —
-                  text only, audio is never stored. Your Groq key lives in the
-                  macOS Keychain, and requests go straight from you to Groq.
+                  History is a local SQLite database with FTS5 full-text search.
+                  Dictation audio only survives long enough to transcribe or retry,
+                  and Clide never changes cloud providers without your choice.
                 </p>
                 <div className="media-inline">
                   <div className="media-frame">
@@ -429,12 +439,12 @@ export default function Home() {
                       <rect x="15.5" y="15.5" width="8" height="8" rx="2" stroke="currentColor" strokeWidth="1.3" />
                     </svg>
                   </span>
-                  <h3>Multiple listening modes</h3>
+                  <h3>One reliable dictation flow</h3>
                 </div>
                 <p>
-                  Dictation mode types anywhere your cursor is, with Verbatim or
-                  Polished processing. Meeting mode separates speakers. Notes mode
-                  organizes freeform voice memos — and File mode is on the roadmap.
+                  Hold or toggle one global shortcut. Choose Verbatim, deterministic
+                  Polished, or on-device Rewrite processing. Imports and per-app
+                  profiles remain roadmap work rather than pretend features.
                 </p>
                 <div className="media-inline">
                   <div className="media-frame">
@@ -461,16 +471,16 @@ export default function Home() {
               <span>Under the hood</span>
             </span>
             <h2 className="t-h1 split-heading" data-split="scroll" style={{ maxWidth: 820, marginInline: "auto", marginTop: 16 }}>
-              <span className="accent-word">Twelve</span> local models, eight engines
+              <span className="accent-word">Thirty-six</span> local models, eight engines
             </h2>
           </div>
           <div className="concept-grid" style={{ marginTop: "var(--sp-8)" }}>
             <div className="concept-card reveal-3d">
-              <h3 className="t-title">Whisper, nine ways</h3>
+              <h3 className="t-title">Whisper, thirty-three ways</h3>
               <p>
-                From Tiny at 74&nbsp;MB to Large&nbsp;v3 Turbo. The compressed
-                Turbo build is the one to take: the same accuracy at a third of
-                the size. Downloaded in-app — no file paths, no hunting.
+                The complete canonical GGML family: multilingual and English-only,
+                Q5 and Q8, Tiny through Medium, Large v1/v2/v3, and Turbo. From
+                31&nbsp;MB to 3&nbsp;GB, downloaded in-app with no file paths.
               </p>
             </div>
             <div className="concept-card reveal-3d" style={{ transitionDelay: ".08s" }}>
@@ -531,23 +541,25 @@ export default function Home() {
             <div className="start-card reveal-3d">
               <div className="start-card-inner">
                 <h3 className="t-subtitle">Download the app</h3>
-                <p>A native Tauri app — Rust under the hood, React on top. Built and signed for Apple Silicon.</p>
+                <p>A native Tauri app — Rust under the hood, React on top. Download the current Apple Silicon preview directly from this site.</p>
                 <div className="start-actions">
-                  <a className="btn btn-primary" href="https://github.com/staraepp/clide_stt/releases" target="_blank" rel="noreferrer">
+                  <a className="btn btn-primary" href={DOWNLOAD_URL} download>
                     <svg width="15" height="15" viewBox="0 0 16 16" fill="none" aria-hidden="true">
                       <path d="M8 2v7.5M8 9.5L4.7 6.2M8 9.5l3.3-3.3" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round" />
                       <path d="M2.5 11.5v1.2a1.3 1.3 0 001.3 1.3h8.4a1.3 1.3 0 001.3-1.3v-1.2" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round" />
                     </svg>
                     Download for Mac
                   </a>
-                  <span className="start-note">Apple Silicon · from GitHub releases</span>
+                  <span className="start-note">v0.1.0 · Apple Silicon · 13.2 MiB</span>
+                  <span className="release-warning">Ad-hoc signed preview — macOS may show a Gatekeeper warning until Developer ID signing and notarization are added.</span>
+                  <code className="release-checksum" title={DOWNLOAD_SHA256}>SHA-256 {DOWNLOAD_SHA256}</code>
                 </div>
               </div>
             </div>
             <div className="start-card reveal-3d" style={{ transitionDelay: ".12s" }}>
               <div className="start-card-inner">
                 <h3 className="t-subtitle">Build from source</h3>
-                <p>Use the bundled app (not Tauri dev) so macOS grants mic + Accessibility to a stable identity.</p>
+                <p>Use the bundled app rather than Tauri dev for realistic microphone and Accessibility permission testing.</p>
                 <div className="start-actions">
                   <button className="btn btn-secondary" type="button" data-copy-text="npm install && npm run app:build -- --debug --bundles app">
                     <svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
@@ -597,7 +609,7 @@ export default function Home() {
               right now, so every bit of help counts.
             </p>
             <div className="community-ctas">
-              <a className="btn btn-primary" href="https://github.com/staraepp/clide_stt/releases/latest" target="_blank" rel="noreferrer">
+              <a className="btn btn-primary" href={DOWNLOAD_URL} download>
                 <svg width="15" height="15" viewBox="0 0 16 16" fill="none" aria-hidden="true">
                   <path d="M8 2v7.5M8 9.5L4.7 6.2M8 9.5l3.3-3.3" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round" />
                   <path d="M2.5 11.5v1.2a1.3 1.3 0 001.3 1.3h8.4a1.3 1.3 0 001.3-1.3v-1.2" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round" />

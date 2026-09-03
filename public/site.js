@@ -55,15 +55,15 @@
       "Groceries: oat milk, coffee, the good sourdough."
     ];
     if (reduceMotion) { target.textContent = phrases[0]; return; }
-    var pi = 0, ci = 0, timer;
+    var pi = 0, ci = 0;
     function typeStep() {
       var phrase = phrases[pi];
       target.textContent = phrase.slice(0, ci);
       if (ci <= phrase.length) {
         ci++;
-        timer = setTimeout(typeStep, 26 + Math.random() * 58);
+        setTimeout(typeStep, 26 + Math.random() * 58);
       } else {
-        timer = setTimeout(eraseStep, 1700);
+        setTimeout(eraseStep, 1700);
       }
     }
     function eraseStep() {
@@ -72,10 +72,10 @@
       if (ci < 0) ci = 0;
       target.textContent = phrase.slice(0, ci);
       if (ci > 0) {
-        timer = setTimeout(eraseStep, 12);
+        setTimeout(eraseStep, 12);
       } else {
         pi = (pi + 1) % phrases.length;
-        timer = setTimeout(typeStep, 450);
+        setTimeout(typeStep, 450);
       }
     }
     typeStep();
@@ -347,12 +347,12 @@
     wrap.appendChild(head);
     var rowsEl = el("div", "mock-rows");
     var data = [
-      ["GQ", "Groq · whisper-large-v3-turbo", "Transcription · your key", true],
-      ["GW", "Groq · whisper-large-v3", "Transcription · your key", false],
-      ["VB", "Verbatim", "Local processing · deterministic", true],
-      ["PL", "Polished", "Local processing · deterministic", true],
-      ["AX", "Accessibility insertion", "Clipboard restore fallback", true],
-      ["KC", "API key", "macOS Keychain", true]
+      ["LW", "Local Whisper · 33 models", "GGML · Metal accelerated", true],
+      ["PK", "Local Parakeet · 3 models", "TDT + CTC · ONNX", true],
+      ["AS", "Apple Speech", "Built in · on-device", true],
+      ["5C", "Five cloud providers", "BYOK · selected explicitly", true],
+      ["AI", "Apple Intelligence Rewrite", "On-device refinement", true],
+      ["AX", "Accessibility insertion", "Copied + targeted paste fallback", true]
     ];
     data.forEach(function (d) {
       var row = el("div", "mock-row" + (d[3] ? "" : " dim"));
@@ -418,7 +418,7 @@
       '</span>' +
       '<span class="picker-pill on">' +
       '<svg viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="3.4" stroke="#0a2338" stroke-width="1.3"/><path d="M8 1.6v1.6M8 12.8v1.6M14.4 8h-1.6M3.2 8H1.6M12.3 3.7l-1.1 1.1M4.8 11.2l-1.1 1.1M12.3 12.3l-1.1-1.1M4.8 4.8L3.7 3.7" stroke="#0a2338" stroke-width="1.2" stroke-linecap="round"/></svg>' +
-      'Dictation mode' +
+      'Processing mode' +
       '<svg class="picker-chev" style="transform:rotate(180deg)" viewBox="0 0 12 12" fill="none"><path d="M3 4.5L6 7.5L9 4.5" stroke="#5a7385" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>' +
       '</span>';
     inner.appendChild(top);
@@ -434,10 +434,9 @@
 
     var list = el("div", "mode-list");
     var modes = [
-      ["Dictation mode", "Type anywhere your cursor is — Verbatim or Polished, in real time.", true],
-      ["Meeting mode", "Transcribes and separates speakers automatically, live or from a recording.", false],
-      ["Notes mode", "Freeform voice memos, auto-organized into searchable notes.", false],
-      ["File mode", "On the roadmap — batch-transcribe dropped recordings.", false]
+      ["Verbatim", "Preserves the words you said with minimal normalization.", false],
+      ["Polished", "Deterministic local cleanup for casing, spacing, fillers, and punctuation.", true],
+      ["Rewrite", "Apple Intelligence turns spoken phrasing into written prose on-device.", false]
     ];
     modes.forEach(function (m) {
       var row = el("div", "mode-row" + (m[2] ? " selected" : ""));

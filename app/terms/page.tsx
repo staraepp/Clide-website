@@ -40,9 +40,10 @@ export default function TermsPage() {
       <h2>Bring-your-own credentials</h2>
       <p>
         clide is a client for services you choose. If you connect a
-        provider such as Groq, your use of that provider is governed by
-        their own terms, not ours. Your API key is stored locally in the
-        macOS Keychain and is never sent anywhere except that provider.
+        cloud provider, your use of that provider is governed by their own
+        terms, not ours. Your API key is stored in a user-only local file
+        and is sent only to the provider you configure. You can instead use
+        Apple Speech or a downloaded local model where supported.
       </p>
 
       <h2>This website</h2>

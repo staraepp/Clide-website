@@ -8,8 +8,6 @@ from the marketing site in `app/` — write here, and wire pages into the site
 
 - `getting-started.md` — install and run clide locally
 - `architecture.md` — how the Rust/React/Tauri pieces fit together
-- `providers.md` — transcription providers and how the adapter works
-- `faq.md` — common questions
 
 ## Ground truth
 

@@ -12,10 +12,10 @@
   --text-description:rgba(10,35,56,.55);
   --text-placeholder:rgba(10,35,56,.34);
 
-  --brand:#2fb9e6;
-  --brand-text:#0c7fae;
-  --brand-deep:#1293c4;
-  --brand-soft:#a8e2f6;
+  --brand:#5b9bc9;
+  --brand-text:#3b7ca8;
+  --brand-deep:#2f6f9c;
+  --brand-soft:#d7e8f4;
   --brand-ink:#041722;
   --brand-glow-1:#082a3f;
   --brand-glow-2:#0f4d70;
@@ -592,6 +592,12 @@ html{scrollbar-width:none}
 @media (min-width:820px) and (max-width:999px){.start-grid{grid-template-columns:1fr 1fr}}
 .start-actions{display:flex;flex-direction:column;gap:10px;margin-top:var(--sp-2);align-items:flex-start}
 .start-note{font-size:12.5px;color:var(--text-description)}
+.release-warning{font-size:12px!important;line-height:1.5!important;color:var(--text-secondary)!important;max-width:48ch}
+.release-checksum{
+  display:block;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;
+  padding:8px 10px;border:1px solid var(--border-subtle);border-radius:var(--radius-sm);
+  background:rgba(6,34,58,.035);font-family:var(--font-mono);font-size:10px;color:var(--text-description);
+}
 .start-cmd{
   font-family:var(--font-mono);font-size:12px;color:var(--text-description);
   background:var(--surface-2);border:1px solid var(--border-subtle);border-radius:8px;

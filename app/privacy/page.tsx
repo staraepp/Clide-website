@@ -32,10 +32,11 @@ export default function PrivacyPage() {
         clide runs on your Mac. Based on the project&apos;s current README:
       </p>
       <ul>
-        <li>Audio is never stored — only text transcripts are saved.</li>
+        <li>Microphone audio is temporary and is removed after a successful transaction, cancellation, or expiry; history keeps transcript text, not a permanent recording.</li>
         <li>History lives in a local SQLite database on your machine, with full-text search over your own transcripts.</li>
-        <li>Transcription currently runs through Groq using your own API key, which is stored in the macOS Keychain — not in a config file, not on our servers.</li>
-        <li>Requests go straight from your machine to your chosen provider. clide has no backend that sees your audio or text.</li>
+        <li>You can use Apple Speech, a configured cloud provider, or a downloaded local Whisper or Parakeet model.</li>
+        <li>Cloud credentials are stored in a user-only local file (mode 0600), never in history, SQLite, or logs.</li>
+        <li>Cloud requests go straight from your machine to the provider you select. clide does not operate an intermediary backend.</li>
       </ul>
       <p>
         Because clide is open source, you can read the code yourself instead
