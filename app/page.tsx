@@ -61,7 +61,7 @@ export default function Home() {
           </button>
         </div>
         <div className="mobile-menu-body">
-          <a className="mobile-menu-item" href="#top">Download</a>
+          <a className="mobile-menu-item" href="https://github.com/staraepp/clide_stt/releases/latest" target="_blank" rel="noreferrer">Download</a>
           <a className="mobile-menu-item" href="#get-started">Docs</a>
           <a className="mobile-menu-item" href="#design-approach">How it works</a>
           <a className="mobile-menu-item" href="#models">Models</a>
@@ -101,7 +101,7 @@ export default function Home() {
                 </p>
               </div>
               <div className="hero-ctas reveal" style={{ transitionDelay: ".3s" }}>
-                <a className="btn btn-primary" href="#top">
+                <a className="btn btn-primary" href="https://github.com/staraepp/clide_stt/releases/latest" target="_blank" rel="noreferrer">
                   <svg width="15" height="15" viewBox="0 0 16 16" fill="none" aria-hidden="true">
                     <path d="M8 2v7.5M8 9.5L4.7 6.2M8 9.5l3.3-3.3" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round" />
                     <path d="M2.5 11.5v1.2a1.3 1.3 0 001.3 1.3h8.4a1.3 1.3 0 001.3-1.3v-1.2" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round" />
@@ -175,7 +175,7 @@ export default function Home() {
             </div>
 
             <div className="hero-ctas-mobile">
-              <a className="btn btn-primary" href="#top">
+              <a className="btn btn-primary" href="https://github.com/staraepp/clide_stt/releases/latest" target="_blank" rel="noreferrer">
                 <svg width="15" height="15" viewBox="0 0 16 16" fill="none" aria-hidden="true">
                   <path d="M8 2v7.5M8 9.5L4.7 6.2M8 9.5l3.3-3.3" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round" />
                   <path d="M2.5 11.5v1.2a1.3 1.3 0 001.3 1.3h8.4a1.3 1.3 0 001.3-1.3v-1.2" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round" />
@@ -460,30 +460,57 @@ export default function Home() {
             <span className="eyebrow-chip">
               <span>Under the hood</span>
             </span>
-            <h2 className="t-h1 split-heading" data-split="scroll" style={{ maxWidth: 760, marginInline: "auto", marginTop: 16 }}>
-              <span className="accent-word">Groq</span> today — the adapter leaves room for more
+            <h2 className="t-h1 split-heading" data-split="scroll" style={{ maxWidth: 820, marginInline: "auto", marginTop: 16 }}>
+              <span className="accent-word">Twelve</span> local models, eight engines
             </h2>
           </div>
           <div className="concept-grid" style={{ marginTop: "var(--sp-8)" }}>
             <div className="concept-card reveal-3d">
-              <h3 className="t-title">Groq Whisper</h3>
+              <h3 className="t-title">Whisper, nine ways</h3>
               <p>
-                whisper-large-v3-turbo or whisper-large-v3, streamed from your
-                machine with your own key. Fast enough to keep up with speech.
+                From Tiny at 74&nbsp;MB to Large&nbsp;v3 Turbo. The compressed
+                Turbo build is the one to take: the same accuracy at a third of
+                the size. Downloaded in-app — no file paths, no hunting.
               </p>
             </div>
-            <div className="concept-card reveal-3d" style={{ transitionDelay: ".12s" }}>
-              <h3 className="t-title">A provider adapter</h3>
+            <div className="concept-card reveal-3d" style={{ transitionDelay: ".08s" }}>
+              <h3 className="t-title">Parakeet, two architectures</h3>
               <p>
-                Every engine sits behind one Rust adapter trait. New providers —
-                cloud or local — plug in without touching the dictation path.
+                NVIDIA&apos;s TDT transducer across 25 languages, and the CTC
+                model in full and quantised builds. Both run through ONNX on
+                your own machine.
+              </p>
+            </div>
+            <div className="concept-card reveal-3d" style={{ transitionDelay: ".16s" }}>
+              <h3 className="t-title">Apple Speech, built in</h3>
+              <p>
+                No key, no download, nothing to configure — it ships with macOS.
+                Forced on-device, so the audio never reaches Apple&apos;s
+                servers either.
               </p>
             </div>
             <div className="concept-card reveal-3d" style={{ transitionDelay: ".24s" }}>
-              <h3 className="t-title">Local models, coming</h3>
+              <h3 className="t-title">Or bring your own key</h3>
               <p>
-                On-device Whisper and friends are on the roadmap — the pipeline
-                already treats the provider as swappable, so it&apos;s a drop-in.
+                Groq, OpenAI, Deepgram, ElevenLabs and AssemblyAI. Audio goes
+                straight from you to the provider, and clide never switches
+                engines behind your back.
+              </p>
+            </div>
+            <div className="concept-card reveal-3d" style={{ transitionDelay: ".32s" }}>
+              <h3 className="t-title">Ranked for your Mac</h3>
+              <p>
+                The model list reads your chip and memory and says which ones
+                will actually run well here. Derived from your hardware — not a
+                leaderboard.
+              </p>
+            </div>
+            <div className="concept-card reveal-3d" style={{ transitionDelay: ".4s" }}>
+              <h3 className="t-title">Rewrite, on device</h3>
+              <p>
+                Apple Intelligence turns spoken phrasing into written prose
+                without leaving your Mac. If it is unavailable, you still get
+                your polished transcript — never nothing.
               </p>
             </div>
           </div>
@@ -570,7 +597,7 @@ export default function Home() {
               right now, so every bit of help counts.
             </p>
             <div className="community-ctas">
-              <a className="btn btn-primary" href="#top">
+              <a className="btn btn-primary" href="https://github.com/staraepp/clide_stt/releases/latest" target="_blank" rel="noreferrer">
                 <svg width="15" height="15" viewBox="0 0 16 16" fill="none" aria-hidden="true">
                   <path d="M8 2v7.5M8 9.5L4.7 6.2M8 9.5l3.3-3.3" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round" />
                   <path d="M2.5 11.5v1.2a1.3 1.3 0 001.3 1.3h8.4a1.3 1.3 0 001.3-1.3v-1.2" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round" />

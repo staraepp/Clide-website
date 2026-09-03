@@ -25,7 +25,7 @@ const fragmentMono = Fragment_Mono({
 export const metadata: Metadata = {
   title: "clide — open-source speech to text",
   description:
-    "clide is a free, open-source speech-to-text app for Mac. Bring your own models — Whisper, Parakeet, Vosk, Moonshine — everything runs locally on your machine.",
+    "clide is a free, open-source speech-to-text app for Mac. Twelve local models — Whisper and Parakeet — plus Apple Speech and your own cloud keys. Nothing leaves your machine unless you ask it to.",
 };
 
 export default function RootLayout({
