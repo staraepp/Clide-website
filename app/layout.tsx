@@ -40,6 +40,17 @@ export default function RootLayout({
     >
       <body>
         {children}
+        {/*
+          Arms the scroll animations before paint, and disarms them if the
+          animation script never reports ready. Without the failsafe a blocked
+          or failed site.js left every section at opacity:0 — a blank page.
+        */}
+        <Script id="arm-reveal" strategy="beforeInteractive">
+          {`document.documentElement.classList.add('js-anim');
+setTimeout(function(){
+  if(!window.__clideRevealReady){document.documentElement.classList.remove('js-anim');}
+},2500);`}
+        </Script>
         <Script src="/site.js" strategy="afterInteractive" />
       </body>
     </html>

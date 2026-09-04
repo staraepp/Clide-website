@@ -32,6 +32,7 @@ export default function Home() {
               <span>fork me</span>
             </span>
           </a>
+          <div className="nav-actions">
           <a className="nav-link" href="/docs">Docs</a>
           <a className="nav-link" href="/changelog">Changelog</a>
           <a className="nav-link" href="https://github.com/staraepp/clide_stt" target="_blank" rel="noreferrer">
@@ -40,6 +41,7 @@ export default function Home() {
             </svg>
             GitHub
           </a>
+          </div>
           <button className="hamburger" id="menuOpenBtn" aria-label="Open menu" aria-expanded="false">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
               <path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />

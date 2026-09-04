@@ -124,6 +124,11 @@
   }
 
   /* ---------- scroll reveal ---------- */
+  // Tell the failsafe in <head> that the animations are handled, so it does
+  // not reveal everything at once. If this line is never reached — script
+  // blocked, error above — the page shows itself anyway rather than staying
+  // blank.
+  window.__clideRevealReady = true;
   var revealEls = document.querySelectorAll(".reveal, .reveal-3d");
   if ("IntersectionObserver" in window && !reduceMotion) {
     var io = new IntersectionObserver(function (entries) {

@@ -108,11 +108,10 @@ html{scrollbar-width:none}
 .t-xs{font-size:13px;line-height:1.5;color:var(--text-description)}
 
 /* ---------- reveal-on-scroll ---------- */
-.reveal{opacity:0;transform:translateY(22px);transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .8s cubic-bezier(.16,1,.3,1)}
+.reveal{transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .8s cubic-bezier(.16,1,.3,1)}
 .reveal.is-in{opacity:1;transform:translateY(0)}
 
 .reveal-3d{
-  opacity:0;transform:perspective(1200px) rotateX(22deg) translateY(64px) scale(.92);filter:blur(7px);
   transition:opacity 1s cubic-bezier(.16,1,.3,1),transform 1s cubic-bezier(.16,1,.3,1),filter 1s cubic-bezier(.16,1,.3,1);
   will-change:transform,opacity,filter;
 }
@@ -738,3 +737,22 @@ html{scrollbar-width:none}
    inherit .legal-page a's dashed underline. */
 .legal-page .btn,
 .docs-body .btn{text-decoration:none}
+
+/* The nav bar is space-between, so loose links spread across its full width
+   and read as scattered. Grouping them keeps the row as brand ... actions. */
+.nav-actions{display:flex;align-items:center;gap:8px;margin-left:auto}
+
+/* ------------------------------------------------------------------
+   Reveal-on-scroll must never be able to hide the whole page.
+
+   These elements used to start at opacity:0 unconditionally, so if
+   site.js was slow, blocked, or errored, the site rendered blank — which
+   is exactly what "nothing loads on first visit" was. Content is now
+   visible by default and only hidden once JS has said it is ready to
+   animate it back in.
+   ------------------------------------------------------------------ */
+html.js-anim .reveal{opacity:0;transform:translateY(22px)}
+html.js-anim .reveal-3d{
+  opacity:0;transform:perspective(1200px) rotateX(22deg) translateY(64px) scale(.92);filter:blur(7px);
+}
+.reveal,.reveal-3d{opacity:1;transform:none;filter:none}
