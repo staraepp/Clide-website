@@ -1,1 +1,1 @@
-ceffbbfe7a854bc9eccee0f27c63b7f7b4624f060042eae156124e0add4898b1  clide-0.1.0-apple-silicon.dmg
+fd43aa1984af2fb38ea0785a63ecd5f8b3d924cc3cf1e9822d49f46ede796b57  clide-0.1.1-apple-silicon.dmg

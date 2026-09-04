@@ -7,8 +7,9 @@ React renders the UI only.
 ## Run the bundled app (recommended)
 
 Use the bundled app rather than `npm run app` (Tauri dev) for anything
-involving permissions. The public preview is currently ad-hoc signed, so macOS
-may require an extra Gatekeeper confirmation and Accessibility may need to be
+involving permissions. The public preview is signed with an Apple Development
+certificate but is not Developer ID notarized, so macOS may require an extra
+Gatekeeper confirmation and Accessibility may need to be
 granted again after a rebuild.
 
 ```

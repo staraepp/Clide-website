@@ -1,6 +1,6 @@
-const DOWNLOAD_URL = "/downloads/clide-0.1.0-apple-silicon.dmg";
+const DOWNLOAD_URL = "/downloads/clide-0.1.1-apple-silicon.dmg";
 const DOWNLOAD_SHA256 =
-  "ceffbbfe7a854bc9eccee0f27c63b7f7b4624f060042eae156124e0add4898b1";
+  "fd43aa1984af2fb38ea0785a63ecd5f8b3d924cc3cf1e9822d49f46ede796b57";
 
 export default function Home() {
   return (
@@ -550,8 +550,8 @@ export default function Home() {
                     </svg>
                     Download for Mac
                   </a>
-                  <span className="start-note">v0.1.0 · Apple Silicon · 13.2 MiB</span>
-                  <span className="release-warning">Ad-hoc signed preview — macOS may show a Gatekeeper warning until Developer ID signing and notarization are added.</span>
+                  <span className="start-note">v0.1.1 · Apple Silicon · 13.3 MiB</span>
+                  <span className="release-warning">Apple Development-signed preview — the signature verifies, but macOS may still show a Gatekeeper warning until Developer ID signing and notarization are added.</span>
                   <code className="release-checksum" title={DOWNLOAD_SHA256}>SHA-256 {DOWNLOAD_SHA256}</code>
                 </div>
               </div>
