@@ -115,7 +115,7 @@ html{scrollbar-width:none}
   transition:opacity 1s cubic-bezier(.16,1,.3,1),transform 1s cubic-bezier(.16,1,.3,1),filter 1s cubic-bezier(.16,1,.3,1);
   will-change:transform,opacity,filter;
 }
-.reveal-3d.is-in{opacity:1;transform:perspective(1200px) rotateX(0) translateY(0) scale(1);filter:blur(0)}
+.reveal-3d.is-in{opacity:1;transform:perspective(1200px) rotateX(0) translateY(0) scale(1);filter:none}
 
 /* per-word 3D flip-up text reveal */
 .split-heading{perspective:900px}
@@ -752,6 +752,13 @@ html{scrollbar-width:none}
    animate it back in.
    ------------------------------------------------------------------ */
 html.js-anim .reveal{opacity:0;transform:translateY(22px)}
+/* These must outrank the hiding rules above. `.reveal.is-in` alone is (0,2,0)
+   and loses to `html.js-anim .reveal` at (0,2,1) — which left every element
+   faded out with no way back. Specificity, not order, is what decides here. */
+html.js-anim .reveal.is-in{opacity:1;transform:translateY(0)}
+html.js-anim .reveal-3d.is-in{
+  opacity:1;transform:perspective(1200px) rotateX(0) translateY(0) scale(1);filter:none
+}
 html.js-anim .reveal-3d{
   opacity:0;transform:perspective(1200px) rotateX(22deg) translateY(64px) scale(.92);filter:blur(7px);
 }
