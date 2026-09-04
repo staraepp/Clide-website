@@ -1,4 +1,4 @@
-const DOWNLOAD_URL = "/downloads/clide-0.1.1-apple-silicon.dmg";
+const DOWNLOAD_URL = "/downloads/clide-0.1.2-apple-silicon.dmg";
 const DOWNLOAD_SHA256 =
   "c16e94d33f59aba76b8e4c1b6b2911f1494d3166934d59cdf7e10d8b7fbdfb22";
 
@@ -32,6 +32,8 @@ export default function Home() {
               <span>fork me</span>
             </span>
           </a>
+          <a className="nav-link" href="/docs">Docs</a>
+          <a className="nav-link" href="/changelog">Changelog</a>
           <a className="nav-link" href="https://github.com/staraepp/clide_stt" target="_blank" rel="noreferrer">
             <svg width="15" height="15" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
               <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z" />
@@ -68,7 +70,8 @@ export default function Home() {
         </div>
         <div className="mobile-menu-body">
           <a className="mobile-menu-item" href={DOWNLOAD_URL} download>Download</a>
-          <a className="mobile-menu-item" href="#get-started">Docs</a>
+          <a className="mobile-menu-item" href="/docs">Docs</a>
+          <a className="mobile-menu-item" href="/changelog">Changelog</a>
           <a className="mobile-menu-item" href="#design-approach">How it works</a>
           <a className="mobile-menu-item" href="#models">Models</a>
         </div>
@@ -188,7 +191,7 @@ export default function Home() {
                 </svg>
                 Download for Mac
               </a>
-              <a className="btn btn-secondary" href="#get-started">Read the docs</a>
+              <a className="btn btn-secondary" href="/docs">Read the docs</a>
               <a className="btn btn-secondary" href="#models">Browse models</a>
               <a className="btn btn-secondary" href="https://github.com/staraepp/clide_stt" target="_blank" rel="noreferrer">View on GitHub</a>
             </div>
@@ -617,7 +620,7 @@ export default function Home() {
                 Download for Mac
               </a>
               <a className="btn btn-secondary" href="https://github.com/staraepp/clide_stt" target="_blank" rel="noreferrer">View on GitHub</a>
-              <a className="btn btn-secondary" href="#get-started">Read the docs</a>
+              <a className="btn btn-secondary" href="/docs">Read the docs</a>
             </div>
           </section>
         </div>
@@ -651,6 +654,10 @@ export default function Home() {
             <p className="footer-copy">Open source · MIT · © 2026 clide. All rights reserved.</p>
 
             <nav className="footer-legal" aria-label="Policies">
+              <a href="/docs">Docs</a>
+              <span className="dot">·</span>
+              <a href="/changelog">Changelog</a>
+              <span className="dot">·</span>
               <a href="/privacy">Privacy Policy</a>
               <span className="dot">·</span>
               <a href="/terms">Terms of Service</a>

@@ -685,3 +685,56 @@ html{scrollbar-width:none}
 .legal-page h2{font-family:var(--font-display);font-size:20px;font-weight:600;color:var(--text-primary);margin-top:var(--sp-7);margin-bottom:var(--sp-3)}
 .legal-page a{color:var(--brand-text);text-decoration:underline;text-decoration-style:dashed;text-underline-offset:3px}
 .legal-page code{font-family:var(--font-mono);font-size:.9em;background:var(--surface-2);padding:2px 6px;border-radius:5px}
+
+/* ============================================================
+   Docs and changelog
+   Built on .legal-page's prose rules rather than a second set:
+   these pages are the same reading surface with navigation added.
+   ============================================================ */
+.docs-shell{display:grid;grid-template-columns:1fr;gap:var(--sp-7);padding-top:var(--sp-9);padding-bottom:var(--sp-11)}
+@media(min-width:900px){.docs-shell{grid-template-columns:220px minmax(0,1fr);gap:var(--sp-9)}}
+
+.docs-nav{position:relative;align-self:start}
+@media(min-width:900px){.docs-nav{position:sticky;top:96px}}
+.docs-nav-label{font-family:var(--font-mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--text-placeholder);margin-bottom:var(--sp-3)}
+.docs-nav ol{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:2px}
+@media(min-width:900px){.docs-nav ol{flex-direction:column;flex-wrap:nowrap}}
+.docs-nav a{display:block;padding:6px 10px;border-radius:8px;font-size:14px;color:var(--text-description);text-decoration:none;transition:background .2s ease,color .2s ease}
+.docs-nav a:hover{background:var(--surface-2);color:var(--text-primary)}
+
+/* Section anchors must clear the floating header when jumped to. */
+.docs-body section{scroll-margin-top:110px}
+.docs-body section+section{margin-top:var(--sp-8)}
+.docs-body h2{font-family:var(--font-display);font-size:22px;font-weight:500;letter-spacing:-.01em;color:var(--text-primary);margin-bottom:var(--sp-3)}
+.docs-body h3{font-size:15px;font-weight:600;color:var(--text-primary);margin-top:var(--sp-5);margin-bottom:var(--sp-2)}
+.docs-body p{font-size:16px;line-height:1.75;color:var(--text-description);margin-bottom:var(--sp-4)}
+.docs-body ul{margin:0 0 var(--sp-4);padding-left:1.2em;color:var(--text-description);font-size:16px;line-height:1.75}
+.docs-body li{margin-bottom:6px}
+.docs-body a{color:var(--brand-text);text-decoration:underline;text-decoration-style:dashed;text-underline-offset:3px}
+.docs-body code{font-family:var(--font-mono);font-size:.88em;background:var(--surface-2);padding:2px 6px;border-radius:5px}
+.docs-body pre{font-family:var(--font-mono);font-size:13px;line-height:1.7;background:var(--surface-2);border:1px solid var(--border-soft);border-radius:12px;padding:14px 16px;overflow-x:auto;margin-bottom:var(--sp-4)}
+.docs-body pre code{background:none;padding:0}
+
+/* A fact worth reading twice — used sparingly, for the gotchas that
+   actually cost people time. */
+.docs-note{border:1px solid var(--border-soft);border-left:3px solid var(--brand-text);border-radius:10px;background:var(--surface-1);padding:14px 16px;margin-bottom:var(--sp-4)}
+.docs-note p{margin:0;font-size:15px}
+.docs-note p+p{margin-top:8px}
+
+.docs-table{width:100%;border-collapse:collapse;margin-bottom:var(--sp-4);font-size:15px}
+.docs-table th{text-align:left;font-family:var(--font-mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--text-placeholder);font-weight:500;padding:0 12px 8px 0;border-bottom:1px solid var(--border-soft)}
+.docs-table td{padding:10px 12px 10px 0;border-bottom:1px solid var(--border-soft);color:var(--text-description);vertical-align:top}
+.docs-table td:first-child{color:var(--text-primary);white-space:nowrap}
+
+/* Changelog: the version is the structure, so it carries the emphasis. */
+.release+.release{margin-top:var(--sp-8);padding-top:var(--sp-8);border-top:1px solid var(--border-soft)}
+.release-head{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:var(--sp-2)}
+.release-version{font-family:var(--font-display);font-size:22px;font-weight:500;letter-spacing:-.01em;color:var(--text-primary)}
+.release-date{font-family:var(--font-mono);font-size:12px;color:var(--text-placeholder)}
+.release-tag{font-family:var(--font-mono);font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;padding:3px 8px;border-radius:999px;border:1px solid rgba(12,127,174,.3);background:rgba(12,127,174,.1);color:var(--brand-text)}
+.release-summary{font-size:16px;line-height:1.7;color:var(--text-description);margin-bottom:var(--sp-3)}
+
+/* Buttons inside prose pages are buttons, not links. Without this they
+   inherit .legal-page a's dashed underline. */
+.legal-page .btn,
+.docs-body .btn{text-decoration:none}
