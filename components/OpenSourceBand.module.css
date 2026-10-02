@@ -1,0 +1,47 @@
+.band {
+  position: relative;
+  margin-top: clamp(40px, 6vw, 80px);
+  padding-block: clamp(90px, 12vw, 150px);
+  overflow: clip;
+}
+
+.inner {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  text-align: center;
+}
+
+.title {
+  max-width: 15ch;
+  font-size: clamp(42px, 7.4vw, 96px);
+}
+
+.title :global(.serif) {
+  font-size: 1.06em;
+}
+
+.inner :global(.lede) {
+  max-width: 560px;
+}
+
+.ctas {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+@media (max-width: 560px) {
+  .ctas {
+    flex-direction: column;
+    width: 100%;
+  }
+  .ctas :global(.btn) {
+    width: 100%;
+  }
+}

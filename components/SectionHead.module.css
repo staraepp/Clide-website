@@ -1,0 +1,46 @@
+.head {
+  display: grid;
+  grid-template-columns: minmax(0, 3fr) minmax(0, 9fr);
+  gap: 24px;
+  padding-top: 22px;
+  border-top: 1px solid var(--line-2);
+  margin-bottom: clamp(48px, 7vw, 96px);
+}
+
+.label {
+  gap: 14px;
+  color: var(--text-2);
+  align-self: start;
+}
+
+.index {
+  color: var(--text-3);
+}
+
+.copy {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.title {
+  max-width: 15ch;
+  font-size: clamp(42px, 7vw, 96px);
+  line-height: 0.98;
+}
+
+.title :global(.serif) {
+  font-size: 1.07em;
+  padding-right: 0.06em;
+}
+
+.lede {
+  max-width: 54ch;
+}
+
+@media (max-width: 760px) {
+  .head {
+    grid-template-columns: 1fr;
+    gap: 22px;
+  }
+}

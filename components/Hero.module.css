@@ -1,0 +1,111 @@
+.hero {
+  position: relative;
+}
+
+/* The shader sits behind the pinned headline only. */
+.hero > :first-child {
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 130svh;
+}
+
+.pin {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  height: 100svh;
+  min-height: 640px;
+}
+
+.copy {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(28px, 5vh, 56px);
+  padding-top: calc(var(--nav-h) + 8px);
+  padding-bottom: 16svh;
+  transform-origin: 0% 50%;
+  will-change: transform, opacity;
+}
+
+.meta {
+  justify-content: space-between;
+  width: 100%;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--line);
+}
+
+.title {
+  font-size: clamp(54px, 10.6vw, 156px);
+  line-height: 0.93;
+  letter-spacing: -0.045em;
+}
+
+.line {
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 0.22em;
+}
+
+.word {
+  display: inline-block;
+  will-change: transform, opacity;
+}
+
+.accent {
+  font-size: 1.07em;
+  letter-spacing: -0.02em;
+  padding-right: 0.08em;
+  line-height: 0.9;
+}
+
+.lower {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 32px 48px;
+  flex-wrap: wrap;
+}
+
+.sub {
+  max-width: 44ch;
+}
+
+.ctas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.stage {
+  position: relative;
+  z-index: 2;
+  margin-top: -14svh;
+  padding-bottom: clamp(60px, 9vw, 130px);
+}
+
+.windowWrap {
+  max-width: 1040px;
+  margin-inline: auto;
+  transform-origin: 50% 0%;
+}
+
+@media (max-width: 760px) {
+  .meta span:last-child {
+    display: none;
+  }
+  .lower {
+    align-items: flex-start;
+  }
+  .ctas {
+    flex-direction: column;
+    width: 100%;
+  }
+  .ctas :global(.btn) {
+    width: 100%;
+  }
+  .stage {
+    margin-top: -6svh;
+  }
+}

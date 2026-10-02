@@ -1,0 +1,34 @@
+.block {
+  margin: 0;
+  border-radius: var(--r-lg);
+  border: 1px solid var(--line-2);
+  background: var(--bg-1);
+  overflow: hidden;
+}
+
+.bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 8px 8px 8px 18px;
+  border-bottom: 1px solid var(--line);
+  background: var(--bg-2);
+}
+
+.block pre {
+  margin: 0;
+  padding: 18px;
+  overflow-x: auto;
+}
+
+.block pre code {
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--text-2);
+  font-family: var(--font-mono);
+  font-size: 13.5px;
+  line-height: 1.75;
+  white-space: pre;
+}

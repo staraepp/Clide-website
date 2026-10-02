@@ -7,10 +7,9 @@ React renders the UI only.
 ## Run the bundled app (recommended)
 
 Use the bundled app rather than `npm run app` (Tauri dev) for anything
-involving permissions. The public preview is signed with an Apple Development
-certificate but is not Developer ID notarized, so macOS may require an extra
-Gatekeeper confirmation and Accessibility may need to be
-granted again after a rebuild.
+involving permissions. Releases from 2.0.0 on are Developer ID signed and notarized. The older 0.1.2
+preview is not, so macOS may require an extra Gatekeeper confirmation. After a
+rebuild, Accessibility may need to be granted again. clide needs macOS 13 or later.
 
 ```
 npm install
@@ -25,16 +24,10 @@ git clone https://github.com/staraepp/clide_stt clide
 cd clide
 ```
 
-## Set up a provider
+## Choose an engine
 
-Choose Apple Speech for a built-in on-device engine, download one of 33 local
-Whisper or three local Parakeet models, or add your own key for Groq, OpenAI,
-Deepgram, ElevenLabs, or AssemblyAI.
+clide runs entirely on your Mac. Use Apple Speech (built in, nothing to install),
+or open Models and press Install on the Whisper or Parakeet models you want.
+Nothing is downloaded until you do.
 
-Cloud credentials are stored in a user-only local file with mode `0600`. They
-never enter SQLite, frontend-persisted state, transcript history, or logs. This
-is weaker than macOS Keychain storage and is intended to return to Keychain once
-Clide ships with a stable Developer ID identity.
-
-After onboarding, use Models to choose an engine/model and Settings →
-Transcription to configure any required cloud credential.
+Cloud engines were removed in 2.0.0.

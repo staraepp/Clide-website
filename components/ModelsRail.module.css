@@ -1,0 +1,126 @@
+.section {
+  padding-block: clamp(60px, 9vw, 120px) 0;
+}
+
+.outer {
+  position: relative;
+}
+
+.sticky {
+  position: sticky;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 28px;
+  height: 100svh;
+  min-height: 560px;
+  padding-top: calc(var(--nav-h) + 8px);
+  overflow: clip;
+}
+
+.bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.progress {
+  position: relative;
+  width: 140px;
+  height: 1px;
+  background: var(--line-2);
+}
+
+.progress i {
+  position: absolute;
+  inset: 0;
+  background: #fff;
+  transform-origin: left;
+  transform: scaleX(0);
+}
+
+.track {
+  display: flex;
+  gap: 14px;
+  margin: 0;
+  padding: 0 var(--gutter) 0 max(var(--gutter), calc((100vw - var(--container)) / 2));
+  list-style: none;
+  width: max-content;
+  will-change: transform, filter;
+}
+
+.native {
+  width: auto;
+  overflow-x: auto;
+  padding-bottom: 16px;
+}
+
+.card {
+  display: flex;
+  flex: none;
+  flex-direction: column;
+  gap: 14px;
+  width: clamp(290px, 28vw, 380px);
+  min-height: 330px;
+  padding: 24px;
+  border-radius: var(--r-lg);
+  border: 1px solid var(--line-2);
+  background: var(--bg-1);
+  transition: border-color 0.3s;
+}
+
+.card:hover {
+  border-color: var(--line-3);
+}
+
+.tag {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-3);
+}
+
+.card h3 {
+  font-size: clamp(22px, 2.2vw, 28px);
+  font-weight: 500;
+  letter-spacing: -0.03em;
+  line-height: 1.12;
+}
+
+.card p {
+  color: var(--text-2);
+  font-size: 15px;
+  line-height: 1.55;
+}
+
+.ratings {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  color: var(--text-3);
+  font-size: 12.5px;
+}
+
+.ratings span {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.card .meta {
+  margin-top: auto;
+  padding-top: 14px;
+  border-top: 1px solid var(--line);
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  letter-spacing: 0.03em;
+  color: var(--text-3);
+}
+
+.note {
+  color: var(--text-3);
+  font-size: 14px;
+}

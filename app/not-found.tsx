@@ -1,66 +1,40 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import styles from "./not-found.module.css";
 
 export const metadata: Metadata = {
   title: "Not found — clide",
   description: "That page does not exist.",
 };
 
-/**
- * The 404.
- *
- * A dictation app's missing page should look like a dictation that came back
- * empty: the waveform is flat, and the status line reads the way clide's own
- * HUD would. It stays a signpost rather than a joke — the useful links are the
- * point, the flat line is just why you smile on the way to them.
- */
+const BARS = Array.from({ length: 31 }, (_, index) => index);
+
+/** A dictation that came back empty: the waveform is flat, with the odd twitch. */
 export default function NotFound() {
-  const FLAT = Array.from({ length: 13 }, () => 4);
-
   return (
-    <main className="legal-page container" style={{ textAlign: "center" }}>
-      <span
-        aria-hidden="true"
-        style={{
-          display: "inline-flex",
-          alignItems: "center",
-          gap: 5,
-          height: 34,
-          marginBottom: 28,
-        }}
-      >
-        {FLAT.map((height, index) => (
-          <span
-            key={index}
-            style={{
-              width: 5,
-              height,
-              borderRadius: 2.5,
-              background: "var(--brand-text)",
-              opacity: 0.45,
-            }}
-          />
+    <main className={`container ${styles.main}`}>
+      <div className={styles.wave} aria-hidden="true">
+        {BARS.map((index) => (
+          <span key={index} style={{ animationDelay: `${Math.abs(15 - index) * 0.09}s` }} />
         ))}
-      </span>
+      </div>
 
-      <h1 className="t-h1">Nothing here to transcribe</h1>
-      <p style={{ maxWidth: 460, marginInline: "auto" }}>
+      <p className="eyebrow">Error 404</p>
+      <h1 className={`display ${styles.title}`}>
+        Nothing here <span className="serif">to transcribe.</span>
+      </h1>
+      <p className="lede">
         That page does not exist. It may have moved, or the link may have been
-        mistyped — which, in fairness, is the problem clide exists to solve.
+        mistyped, which is the problem clide exists to solve.
       </p>
 
-      <div
-        style={{
-          display: "flex",
-          gap: 10,
-          justifyContent: "center",
-          flexWrap: "wrap",
-          marginTop: 28,
-        }}
-      >
-        <Link className="btn btn-primary" href="/">Back to clide</Link>
-        <Link className="btn btn-secondary" href="/docs">Read the docs</Link>
-        <Link className="btn btn-secondary" href="/changelog">Changelog</Link>
+      <div className={styles.ctas}>
+        <Link className="btn btn-primary" href="/">
+          Back to clide
+        </Link>
+        <Link className="btn btn-ghost" href="/docs">
+          Read the docs
+        </Link>
       </div>
     </main>
   );

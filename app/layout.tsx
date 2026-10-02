@@ -1,18 +1,13 @@
-import type { Metadata } from "next";
-import { Montserrat, DM_Sans, Fragment_Mono } from "next/font/google";
-import Script from "next/script";
+import type { Metadata, Viewport } from "next";
+import { DM_Sans, Fragment_Mono, Instrument_Serif } from "next/font/google";
+import { SiteNav } from "@/components/SiteNav";
+import { ScrollMeter } from "@/components/ScrollMeter";
+import { SiteFooter } from "@/components/SiteFooter";
 import "./globals.css";
-
-const montserrat = Montserrat({
-  subsets: ["latin"],
-  weight: ["500", "600"],
-  variable: "--font-montserrat",
-});
 
 const dmSans = DM_Sans({
   subsets: ["latin"],
   weight: ["400", "500", "600"],
-  style: ["normal", "italic"],
   variable: "--font-dm-sans",
 });
 
@@ -22,36 +17,40 @@ const fragmentMono = Fragment_Mono({
   variable: "--font-fragment-mono",
 });
 
+const instrumentSerif = Instrument_Serif({
+  subsets: ["latin"],
+  weight: ["400"],
+  style: ["italic"],
+  variable: "--font-instrument-serif",
+});
+
 export const metadata: Metadata = {
-  title: "clide — open-source speech to text",
+  title: "clide — open-source dictation for Mac",
   description:
-    "clide is free, open-source system-wide dictation for Mac with 36 local models, eight transcription engines, and explicit control over when audio leaves your machine.",
+    "clide is free, open-source system-wide dictation for Mac. Three on-device engines, 39 local models you install yourself, and no account, cloud, or API keys.",
+};
+
+export const viewport: Viewport = {
+  themeColor: "#08080a",
+  colorScheme: "dark",
 };
 
 export default function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+}: Readonly<{ children: React.ReactNode }>) {
   return (
     <html
       lang="en"
-      className={`${montserrat.variable} ${dmSans.variable} ${fragmentMono.variable}`}
+      className={`${dmSans.variable} ${fragmentMono.variable} ${instrumentSerif.variable}`}
     >
       <body>
-        {children}
-        {/*
-          Arms the scroll animations before paint, and disarms them if the
-          animation script never reports ready. Without the failsafe a blocked
-          or failed site.js left every section at opacity:0 — a blank page.
-        */}
-        <Script id="arm-reveal" strategy="beforeInteractive">
-          {`document.documentElement.classList.add('js-anim');
-setTimeout(function(){
-  if(!window.__clideRevealReady){document.documentElement.classList.remove('js-anim');}
-},2500);`}
-        </Script>
-        <Script src="/site.js" strategy="afterInteractive" />
+        <a className="skip-link" href="#main">
+          Skip to content
+        </a>
+        <SiteNav />
+        <ScrollMeter />
+        <div id="main">{children}</div>
+        <SiteFooter />
       </body>
     </html>
   );

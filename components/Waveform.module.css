@@ -1,0 +1,20 @@
+.wave {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 3px;
+  height: 44px;
+  width: 100%;
+}
+
+.bar {
+  flex: 1;
+  max-width: 6px;
+  height: 100%;
+  border-radius: 99px;
+  background: linear-gradient(180deg, #fff, rgba(255, 255, 255, 0.55));
+  transform: scaleY(0.08);
+  transform-origin: center;
+  transition: transform 0.35s var(--ease-out);
+  will-change: transform;
+}
