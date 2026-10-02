@@ -1,0 +1,33 @@
+.main {
+  padding-top: calc(var(--nav-h) + clamp(48px, 9vw, 110px));
+  padding-bottom: clamp(60px, 9vw, 120px);
+}
+
+.head {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 18px;
+  max-width: 760px;
+  margin-bottom: clamp(40px, 6vw, 72px);
+}
+
+.title {
+  font-size: clamp(42px, 7vw, 84px);
+}
+
+.updated {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-3);
+}
+
+.narrow {
+  max-width: 760px;
+}
+
+.wide {
+  max-width: none;
+}

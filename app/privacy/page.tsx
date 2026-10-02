@@ -1,66 +1,183 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { PageShell } from "@/components/PageShell";
+import { ISSUES_URL, REPO_URL } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Privacy Policy — clide",
-  description: "clide privacy policy: what this website collects (nothing) and how the open-source app handles your data.",
+  description:
+    "What the clide website and app do with your data: no accounts, no analytics, no cookies, and dictation that stays on your Mac unless you choose a cloud provider.",
 };
 
 export default function PrivacyPage() {
   return (
-    <main className="legal-page container">
-      <Link href="/" className="legal-back">← Back to clide</Link>
-      <h1 className="t-h1" style={{ marginTop: 24 }}>Privacy Policy</h1>
-      <p className="legal-updated">Last updated September 2026</p>
+    <PageShell
+      eyebrow="Legal"
+      title="Privacy Policy"
+      updated="Last updated 1 October 2026"
+      intro="The short version: clide runs entirely on your Mac. There are no accounts, no analytics, no tracking, and your audio is never uploaded."
+    >
+      <div className="prose">
+        <h2>Who this covers</h2>
+        <p>
+          clide is free, open-source software maintained by the{" "}
+          <a href="https://github.com/staraepp" target="_blank" rel="noreferrer">staraepp</a>{" "}
+          project. This policy covers two separate things: this website
+          (clide.staraep.fun), and the clide app that runs on your Mac. It
+          does not cover the third-party services you may choose to connect.
+        </p>
 
-      <p>
-        clide is free, open-source software licensed under MIT. This page
-        covers two things separately: this marketing website, and the clide
-        app itself.
-      </p>
+        <h2>This website</h2>
+        <ul>
+          <li>No accounts, no sign-up, no forms, and no newsletter.</li>
+          <li>No analytics, advertising, or tracking scripts of any kind.</li>
+          <li>
+            No cookies and no browser storage. See the{" "}
+            <Link href="/cookies">Cookie Policy</Link>.
+          </li>
+          <li>Fonts are bundled with the site, so your browser makes no requests to font providers.</li>
+          <li>
+            The pages and the app download are delivered by our hosting
+            provider. Like every web host, it processes technical request data
+            (such as your IP address, browser type and the page requested) to
+            deliver the site and keep it secure. We do not use that data to
+            identify or profile visitors, and we have no access to your
+            dictation.
+          </li>
+          <li>
+            Links to GitHub and other sites take you to services with their own
+            privacy policies.
+          </li>
+        </ul>
 
-      <h2>This website</h2>
-      <p>
-        This site is a static page with no accounts, no analytics, and no
-        tracking scripts. We do not collect, store, or sell any personal
-        data through it. There is nothing to sign up for and nothing to opt
-        out of.
-      </p>
+        <h2>The clide app</h2>
+        <p>
+          The app runs on your Mac. There is no clide account and no clide
+          server, and the app contains no analytics, telemetry or crash
+          reporting. You can read the source in the{" "}
+          <a href={REPO_URL} target="_blank" rel="noreferrer">GitHub repository</a>.
+        </p>
 
-      <h2>The clide app</h2>
-      <p>
-        clide runs on your Mac. Based on the project&apos;s current README:
-      </p>
-      <ul>
-        <li>Microphone audio is temporary and is removed after a successful transaction, cancellation, or expiry; history keeps transcript text, not a permanent recording.</li>
-        <li>History lives in a local SQLite database on your machine, with full-text search over your own transcripts.</li>
-        <li>You can use Apple Speech, a configured cloud provider, or a downloaded local Whisper or Parakeet model.</li>
-        <li>Cloud credentials are stored in a user-only local file (mode 0600), never in history, SQLite, or logs.</li>
-        <li>Cloud requests go straight from your machine to the provider you select. clide does not operate an intermediary backend.</li>
-      </ul>
-      <p>
-        Because clide is open source, you can read the code yourself instead
-        of taking our word for it — see the{" "}
-        <a href="https://github.com/staraepp/clide_stt" target="_blank" rel="noreferrer">
-          GitHub repository
-        </a>.
-      </p>
+        <h3>What is stored on your Mac</h3>
+        <ul>
+          <li>
+            <strong>History:</strong> the text of your transcripts, with the
+            time and the app you dictated into, in a local SQLite database.
+            History never stores audio.
+          </li>
+          <li>
+            <strong>Recordings:</strong> written to a temporary file and deleted
+            as soon as transcription finishes, is cancelled, or expires. A short
+            window (up to 120 seconds) is kept only so a failed transcription
+            can be retried without speaking again.
+          </li>
+          <li>
+            <strong>Models:</strong> the speech models you choose to install,
+            kept on your disk until you remove them.
+          </li>
+          <li>
+            <strong>Settings:</strong> your shortcut, chosen engine, processing
+            mode and similar preferences.
+          </li>
+          <li>
+            <strong>Old keys:</strong> installs that upgraded from a 0.1.x build
+            may still have an unused API-key file on disk. It is no longer read,
+            and you can delete it.
+          </li>
+        </ul>
 
-      <h2>We do not sell your data</h2>
-      <p>
-        clide does not sell, rent, or share user data, because clide does
-        not collect user data in the first place. There is no analytics
-        pipeline and no third party this project shares information with.
-      </p>
+        <h3>When the app connects to the internet</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>When</th>
+              <th>Who receives what</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>You dictate</td>
+              <td>Nothing is sent anywhere. Apple Speech is forced on-device, and Whisper and Parakeet run locally.</td>
+            </tr>
+            <tr>
+              <td>You press Install on a model</td>
+              <td>Hugging Face receives a download request for that model, including your IP address. No model is downloaded unless you ask for it.</td>
+            </tr>
+            <tr>
+              <td>Roughly once a day</td>
+              <td>The app asks GitHub for the latest release information, so it can tell you when an update exists. GitHub receives the request like any web request, including your IP address.</td>
+            </tr>
+            <tr>
+              <td>You press Update</td>
+              <td>The new version is downloaded from GitHub, checked against a signature key built into the app, and only then installed. Nothing is ever installed without that button press.</td>
+            </tr>
+            <tr>
+              <td>You use Rewrite with Ollama</td>
+              <td>Your transcript goes to Ollama running on your own Mac, over the loopback address (127.0.0.1) only. It does not travel over the internet.</td>
+            </tr>
+          </tbody>
+        </table>
 
-      <h2>Questions</h2>
-      <p>
-        Open an issue on the{" "}
-        <a href="https://github.com/staraepp/clide_stt/issues" target="_blank" rel="noreferrer">
-          GitHub issue tracker
-        </a>{" "}
-        and a contributor will get back to you.
-      </p>
-    </main>
+        <h3>Older preview builds</h3>
+        <p>
+          Preview builds up to and including 0.1.2 also contain optional cloud
+          engines (Groq, OpenAI, Deepgram, ElevenLabs and AssemblyAI) that are
+          off until you add your own API key. If you used one, your audio, or
+          for cloud Rewrite your transcript text, went straight from your Mac to
+          the provider you chose, under that provider&apos;s terms and privacy
+          policy, and the key was kept in a user-only local file. Version
+          2.0.0 and later are local-only and have no cloud engines or API keys.
+          Those older builds also cannot update themselves.
+        </p>
+
+        <h3>Permissions</h3>
+        <p>macOS asks for each permission when the feature first needs it.</p>
+        <ul>
+          <li><strong>Microphone:</strong> to record while you hold the shortcut.</li>
+          <li><strong>Accessibility:</strong> to type the transcript into the app you were using.</li>
+          <li><strong>Speech Recognition:</strong> only for Apple Speech.</li>
+        </ul>
+        <p>
+          The app reads the name of the active application to label history
+          entries. It does not read other apps&apos; content. With Apple Speech
+          live typing on, it types words into the app as you speak them.
+        </p>
+
+        <h2>Your choices and rights</h2>
+        <p>
+          Because we do not collect or hold your personal data, there is
+          nothing on our side to access, correct or delete. Everything the app
+          keeps is on your Mac, and you control it: you can delete history
+          entries, remove models, uninstall the app, and delete its data
+          folder at any time. For data held by third parties such as our hosting provider,
+          Hugging Face or GitHub, contact them directly under their policies. If
+          you are in a region with data-protection laws such as the GDPR or
+          the CCPA, you have the rights those laws give you. Ask us a question
+          through the contact below and we will answer what we can.
+        </p>
+
+        <h2>Children</h2>
+        <p>
+          clide is a general-purpose utility and is not directed at children.
+          We do not knowingly collect information from anyone, including
+          children.
+        </p>
+
+        <h2>Changes to this policy</h2>
+        <p>
+          If the site or the app starts collecting anything it does not
+          collect today, we will update this page first and note the change in
+          the <Link href="/changelog">changelog</Link>. The date at the top
+          shows when it was last revised.
+        </p>
+
+        <h2>Contact</h2>
+        <p>
+          Open an issue on the{" "}
+          <a href={ISSUES_URL} target="_blank" rel="noreferrer">GitHub issue tracker</a>.
+          Please do not post private or sensitive information in a public issue.
+        </p>
+      </div>
+    </PageShell>
   );
 }

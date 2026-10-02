@@ -1,0 +1,23 @@
+.layout {
+  display: grid;
+  grid-template-columns: 220px minmax(0, 760px);
+  gap: clamp(32px, 6vw, 96px);
+}
+
+.body section {
+  scroll-margin-top: calc(var(--nav-h) + 24px);
+}
+
+.body section + section {
+  margin-top: 3.2em;
+}
+
+.body section > * + * {
+  margin-top: 1.1em;
+}
+
+@media (max-width: 900px) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
+}

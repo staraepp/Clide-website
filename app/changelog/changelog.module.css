@@ -1,0 +1,119 @@
+.link {
+  color: var(--text);
+  text-decoration: underline;
+  text-decoration-color: var(--line-3);
+  text-underline-offset: 3px;
+}
+
+.timeline {
+  position: relative;
+  margin: 0;
+  padding: 0 0 0 36px;
+  list-style: none;
+}
+
+.timeline::before {
+  content: "";
+  position: absolute;
+  top: 8px;
+  bottom: 0;
+  left: 5px;
+  width: 1px;
+  background: linear-gradient(180deg, var(--line-3), var(--line) 70%, transparent);
+}
+
+.release {
+  position: relative;
+  padding-bottom: clamp(44px, 6vw, 72px);
+}
+
+.marker {
+  position: absolute;
+  top: 9px;
+  left: -36px;
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background: var(--bg);
+  border: 1px solid var(--line-3);
+}
+
+.release:first-child .marker {
+  background: #fff;
+  border-color: #fff;
+  box-shadow: 0 0 0 5px rgba(var(--glow), 0.18);
+}
+
+.head {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 8px 16px;
+}
+
+.head h2 {
+  font-size: clamp(32px, 4vw, 44px);
+  font-weight: 500;
+  letter-spacing: -0.035em;
+  line-height: 1;
+}
+
+.head time {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-3);
+}
+
+.tag {
+  padding: 3px 11px;
+  border-radius: 999px;
+  border: 1px solid var(--line-2);
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--text-2);
+  font-size: 12px;
+}
+
+.release:first-child .tag {
+  border-color: rgba(95, 208, 138, 0.3);
+  background: rgba(95, 208, 138, 0.1);
+  color: #8ee0ad;
+}
+
+.summary {
+  margin-top: 16px;
+  max-width: 60ch;
+  color: var(--text);
+  font-size: 18px;
+  line-height: 1.55;
+  letter-spacing: -0.01em;
+}
+
+.release ul {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 20px 0 0;
+  padding: 0;
+  list-style: none;
+  color: var(--text-2);
+  font-size: 15.5px;
+  line-height: 1.6;
+}
+
+.release ul li {
+  position: relative;
+  padding-left: 22px;
+  max-width: 64ch;
+}
+
+.release ul li::before {
+  content: "";
+  position: absolute;
+  top: 0.7em;
+  left: 0;
+  width: 8px;
+  height: 1px;
+  background: var(--text-3);
+}

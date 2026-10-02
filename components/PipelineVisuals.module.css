@@ -1,0 +1,256 @@
+.frame {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  border-radius: var(--r-xl);
+  border: 1px solid var(--line-2);
+  background: var(--bg-1);
+  overflow: hidden;
+}
+
+.caption {
+  padding: 16px 22px;
+  border-bottom: 1px solid var(--line);
+}
+
+.content {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: center;
+  gap: 24px;
+  padding: clamp(20px, 3vw, 40px);
+  min-height: 0;
+}
+
+.hint {
+  color: var(--text-3);
+  font-size: 14px;
+  line-height: 1.55;
+}
+
+/* Shortcut */
+.keys {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+}
+
+.bigKey {
+  min-width: clamp(76px, 12vw, 120px);
+  height: clamp(76px, 12vw, 120px);
+  border-radius: 18px;
+  font-size: clamp(30px, 5vw, 48px);
+  border-bottom-width: 6px;
+}
+
+.bigKey[data-pressed="true"] {
+  transform: translateY(4px);
+  border-bottom-width: 2px;
+}
+
+/* Capture */
+.hud {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: 16px 22px;
+  border-radius: 999px;
+  border: 1px solid var(--line-2);
+  background: #000;
+}
+
+.hudLabel {
+  flex: none;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-2);
+}
+
+/* Transcribe */
+.engine {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 18px 20px;
+  border-radius: var(--r-lg);
+  border: 1px solid var(--line-2);
+  background: var(--bg-2);
+}
+
+.engine strong {
+  font-size: 22px;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+}
+
+.engine span {
+  color: var(--text-2);
+  font-size: 14px;
+}
+
+.engine .runs {
+  margin-top: 8px;
+  color: #8ee0ad;
+  font-size: 13px;
+}
+
+.raw {
+  min-height: 3.2em;
+  font-size: clamp(17px, 2vw, 22px);
+  line-height: 1.45;
+  letter-spacing: -0.01em;
+  color: var(--text-2);
+}
+
+.caret {
+  display: inline-block;
+  width: 2px;
+  height: 1.05em;
+  margin-left: 2px;
+  vertical-align: -0.15em;
+  background: var(--text);
+  animation: blink 1s steps(1) infinite;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+/* Process */
+.struck {
+  color: var(--text-3);
+  text-decoration: line-through;
+}
+
+.polished {
+  font-size: clamp(19px, 2.3vw, 26px);
+  line-height: 1.4;
+  letter-spacing: -0.015em;
+  color: var(--text);
+}
+
+.modes {
+  display: inline-flex;
+  width: fit-content;
+  padding: 3px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: var(--bg);
+}
+
+.modes span {
+  padding: 6px 14px;
+  border-radius: 999px;
+  color: var(--text-3);
+  font-size: 13px;
+}
+
+.modes span[data-active="true"] {
+  background: var(--bg-4);
+  color: var(--text);
+}
+
+/* Insert */
+.editor {
+  border-radius: var(--r-lg);
+  border: 1px solid var(--line-2);
+  background: var(--bg);
+  overflow: hidden;
+}
+
+.editorBar {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--line);
+  color: var(--text-3);
+  font-size: 12px;
+}
+
+.editorBar i {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--bg-4);
+}
+
+.editorBar span {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.editor p {
+  min-height: 5.2em;
+  padding: 18px;
+  font-size: clamp(16px, 1.8vw, 20px);
+  line-height: 1.5;
+}
+
+.checks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.checks li {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  border: 1px solid var(--line-2);
+  color: var(--text-2);
+  font-size: 13px;
+}
+
+.checks svg {
+  color: var(--ok);
+}
+
+/* History */
+.rows {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.rows li {
+  display: grid;
+  grid-template-columns: 48px 64px minmax(0, 1fr);
+  gap: 14px;
+  align-items: center;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--line);
+  font-size: 14.5px;
+}
+
+.rows li span:nth-child(-n + 2) {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-3);
+}
+
+.rows li span:last-child {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.newRow {
+  color: var(--text);
+}
+
+.newRow span:first-child {
+  color: var(--ok) !important;
+}

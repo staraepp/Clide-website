@@ -1,0 +1,90 @@
+.footer {
+  position: relative;
+  margin-top: 40px;
+  border-top: 1px solid var(--line);
+  overflow: hidden;
+}
+
+.inner {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr 1fr 1fr;
+  gap: 40px;
+  padding-top: 64px;
+  padding-bottom: 40px;
+}
+
+.brandCol {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  max-width: 320px;
+  color: var(--text-2);
+  font-size: 15px;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  color: var(--text);
+  font-size: 18px;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+}
+
+.legal {
+  margin-top: 6px;
+  color: var(--text-3);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.04em;
+}
+
+.col {
+  display: flex;
+  flex-direction: column;
+  gap: 11px;
+  font-size: 15px;
+  color: var(--text-2);
+}
+
+.col h2 {
+  margin-bottom: 6px;
+}
+
+.col a {
+  width: fit-content;
+  transition: color 0.2s;
+}
+
+.col a:hover {
+  color: var(--text);
+}
+
+/* Oversized wordmark that fades into the page, purely decorative. */
+.wordmark {
+  margin-top: -6px;
+  padding-bottom: 0;
+  text-align: center;
+  font-size: clamp(120px, 27vw, 360px);
+  font-weight: 500;
+  letter-spacing: -0.07em;
+  line-height: 0.78;
+  color: transparent;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0) 80%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  user-select: none;
+  pointer-events: none;
+  height: 0.62em;
+  overflow: hidden;
+}
+
+@media (max-width: 860px) {
+  .inner {
+    grid-template-columns: 1fr 1fr;
+  }
+  .brandCol {
+    grid-column: 1 / -1;
+  }
+}
