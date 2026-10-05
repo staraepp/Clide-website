@@ -15,9 +15,22 @@ export const metadata: Metadata = {
  */
 const RELEASES = [
   {
+    version: "2.1.0",
+    date: "5 October 2026",
+    tag: "Latest",
+    summary:
+      "An optional Local API lets other apps on your Mac use clide for transcription and follow its recording state.",
+    changes: [
+      "Settings has a new Local API section, off by default. It listens on 127.0.0.1 only, so nothing on your network can reach it, and every request needs a token you can copy or regenerate.",
+      "Transcribe audio files (wav, m4a, mp3, flac, caf, aiff) with your current engine and mode. The API never types anything.",
+      "A live event stream reports when you start and stop recording, a mic level, partial text with Apple Speech, and each finished transcript.",
+      "Choose the port, allow specific web origins, and switch the transcription and event endpoints on or off separately.",
+    ],
+  },
+  {
     version: "2.0.0",
     date: "1 October 2026",
-    tag: "Latest",
+    tag: "Previous",
     summary:
       "clide goes fully local, gets a flat monochrome redesign, and learns to type as you speak and to take corrections.",
     changes: [
