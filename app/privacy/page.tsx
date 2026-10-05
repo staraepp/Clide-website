@@ -14,7 +14,7 @@ export default function PrivacyPage() {
     <PageShell
       eyebrow="Legal"
       title="Privacy Policy"
-      updated="Last updated 1 October 2026"
+      updated="Last updated 5 October 2026"
       intro="The short version: clide runs entirely on your Mac. There are no accounts, no analytics, no tracking, and your audio is never uploaded."
     >
       <div className="prose">
@@ -80,6 +80,11 @@ export default function PrivacyPage() {
             mode and similar preferences.
           </li>
           <li>
+            <strong>Local API token:</strong> only if you turn on the optional
+            Local API, a random token is kept in the same local settings
+            database. It is never written to logs.
+          </li>
+          <li>
             <strong>Old keys:</strong> installs that upgraded from a 0.1.x build
             may still have an unused API-key file on disk. It is no longer read,
             and you can delete it.
@@ -110,6 +115,10 @@ export default function PrivacyPage() {
             <tr>
               <td>You press Update</td>
               <td>The new version is downloaded from GitHub, checked against a signature key built into the app, and only then installed. Nothing is ever installed without that button press.</td>
+            </tr>
+            <tr>
+              <td>You turn on the Local API (off by default)</td>
+              <td>Nothing is sent anywhere. clide listens on your Mac&apos;s loopback address (127.0.0.1) only, so just apps on the same Mac can reach it, and only with the token. It makes no outbound connections. Uploaded audio and transcripts are not logged, and uploaded audio is deleted when the request ends.</td>
             </tr>
             <tr>
               <td>You use Rewrite with Ollama</td>

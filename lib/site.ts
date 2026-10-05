@@ -21,14 +21,14 @@ export const RELEASE: {
   notarized: boolean;
   dmg: Dmg | null;
 } = {
-  version: "2.0.0",
+  version: "2.1.0",
   minMacOS: "13",
   notarized: true,
   dmg: {
-    file: "clide_2.0.0_aarch64.dmg",
-    url: "https://github.com/staraepp/clide_stt/releases/download/v2.0.0/clide_2.0.0_aarch64.dmg",
-    size: "14.9 MiB",
-    sha256: "1b3c0b96abec9975d1f4a6bb930d31a85ed034bde27426eb567a4ae530db4379",
+    file: "clide_2.1.0_aarch64.dmg",
+    url: "https://github.com/staraepp/clide_stt/releases/download/v2.1.0/clide_2.1.0_aarch64.dmg",
+    size: "15.2 MiB",
+    sha256: "ace97d1c7ab783cfa4861f90049217bfcc972a80b6a5b601a677ab424a60e961",
   },
 };
 
