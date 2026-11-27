@@ -61,7 +61,7 @@ export function Hero() {
           >
             <span>clide / dictation for Mac and Windows</span>
             <span>
-              v{RELEASE.version} · MIT · On-device
+              macOS v{RELEASE.version} · Windows v{RELEASE.windowsVersion} · MIT
             </span>
           </motion.p>
 

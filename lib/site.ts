@@ -10,24 +10,28 @@ export type Installer = {
   sha256: string;
 };
 
+const MAC_VERSION = "2.1.3";
+const WINDOWS_VERSION = "2.1.2";
+
 export const RELEASE = {
-  version: "2.1.2",
+  version: MAC_VERSION,
+  windowsVersion: WINDOWS_VERSION,
   minMacOS: "13",
   dmg: {
-    file: "clide_2.1.2_aarch64.dmg",
-    url: `${RELEASES_URL}/download/v2.1.2/clide_2.1.2_aarch64.dmg`,
-    size: "13.8 MiB",
-    sha256: "96937d614c979ce534a907733019658f3adbd2e13a425faeb2e614360a0695ac",
+    file: `clide_${MAC_VERSION}_aarch64.dmg`,
+    url: `${RELEASES_URL}/download/v${MAC_VERSION}/clide_${MAC_VERSION}_aarch64.dmg`,
+    size: "16.6 MiB",
+    sha256: "9bb1326c2fe8272de3c44571980ce3b8af92cb268ffdd3e12cd65bea950bdfdd",
   },
   windows: {
-    file: "clide_2.1.2_x64-setup.exe",
-    url: `${RELEASES_URL}/download/v2.1.2/clide_2.1.2_x64-setup.exe`,
+    file: `clide_${WINDOWS_VERSION}_x64-setup.exe`,
+    url: `${RELEASES_URL}/download/v${WINDOWS_VERSION}/clide_${WINDOWS_VERSION}_x64-setup.exe`,
     size: "17.1 MiB",
     sha256: "5582080bd72f79850a5252bff69fabc22d1e57ddf434b01437dc0669541627f0",
   },
   cuda: {
-    file: "clide_2.1.2_cuda_x64-setup.exe",
-    url: `${RELEASES_URL}/download/v2.1.2/clide_2.1.2_cuda_x64-setup.exe`,
+    file: `clide_${WINDOWS_VERSION}_cuda_x64-setup.exe`,
+    url: `${RELEASES_URL}/download/v${WINDOWS_VERSION}/clide_${WINDOWS_VERSION}_cuda_x64-setup.exe`,
     size: "449.7 MiB",
     sha256: "ef4c3eba739ff457505e25319d9dedcf46fb1c31fd0e6410233444e793688474",
   },

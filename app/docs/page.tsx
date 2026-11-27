@@ -3,7 +3,7 @@ import Link from "next/link";
 import { CodeBlock } from "@/components/CodeBlock";
 import { DocsNav } from "@/components/DocsNav";
 import { PageShell } from "@/components/PageShell";
-import { ISSUES_URL, LEGACY, RELEASE } from "@/lib/site";
+import { ISSUES_URL, LEGACY, RELEASE, RELEASES_URL } from "@/lib/site";
 import styles from "./docs.module.css";
 
 export const metadata: Metadata = {
@@ -17,6 +17,7 @@ const SECTIONS = [
   { id: "install", label: "Install" },
   { id: "permissions", label: "Permissions" },
   { id: "engines", label: "Engines" },
+  { id: "whisper-startup", label: "Whisper startup" },
   { id: "models", label: "Local models" },
   { id: "modes", label: "Processing modes" },
   { id: "shortcut", label: "The shortcut" },
@@ -41,7 +42,7 @@ export default function DocsPage() {
       eyebrow="Documentation"
       title="Docs"
       width="wide"
-      updated={`For clide ${RELEASE.version} · macOS and Windows`}
+      updated={`macOS ${RELEASE.version} · Windows ${RELEASE.windowsVersion}`}
     >
       <div className={styles.layout}>
         <DocsNav sections={SECTIONS} />
@@ -66,13 +67,13 @@ export default function DocsPage() {
             <h2>Install</h2>
             <h3>macOS</h3>
             <p>
-              Open the <a href={RELEASE.dmg.url}>DMG</a> and drag clide into Applications.
+              Open the <a href={RELEASE.dmg.url}>macOS {RELEASE.version} DMG</a> and drag clide into Applications.
               You need Apple Silicon and macOS {RELEASE.minMacOS} or later.
             </p>
             <CodeBlock code={`shasum -a 256 ~/Downloads/${RELEASE.dmg.file}`} />
             <h3>Windows</h3>
             <p>
-              Run the <a href={RELEASE.windows.url}>Windows x64 installer</a> on a PC with
+              Run the <a href={RELEASE.windows.url}>Windows x64 {RELEASE.windowsVersion} installer</a> on a PC with
               WebView2. Choose Whisper or Parakeet in clide and download a model to get started.
               Windows supports Verbatim and Polished. Apple Speech, live typing, Rewrite, and the macOS Accessibility steps below are Mac-specific.
             </p>
@@ -136,6 +137,26 @@ export default function DocsPage() {
               If an engine fails, clide tells you what happened and lets you retry or
               choose another one you have installed. It never changes engines behind
               your back.
+            </p>
+          </section>
+
+          <section id="whisper-startup">
+            <h2>Whisper startup on macOS</h2>
+            <p>
+              Whisper already used Metal for inference. Since Clide 2.1.3, the Apple Silicon
+              app loads a precompiled <code>default.metallib</code> in place of compiling
+              Metal shader source on the first model load.
+            </p>
+            <ul>
+              <li>Metal library load fell from 11.3 s to about 0.001 s on an M2 Pro.</li>
+              <li>App model load on the same Mac fell from about 9.45 s to about 0.98 s.</li>
+              <li>Warm-up inference took about 0.91 s.</li>
+              <li>A later 7.8 s dictation took about 0.44 s to transcribe.</li>
+            </ul>
+            <p>
+              The first two measurements describe cold start. The inference timings were
+              measured separately on the same Mac. See the{" "}
+              <a href={`${RELEASES_URL}/tag/v2.1.3`}>Clide 2.1.3 release notes</a>.
             </p>
           </section>
 
@@ -268,7 +289,7 @@ export default function DocsPage() {
               its own: when one exists, the Update button appears, and only pressing it downloads
               the new version. The download is verified against a public key built into the app,
               so a package that was not signed by the project is rejected wherever it came from.
-              In-app updating was introduced in macOS 2.0.0. For 2.1.2, download the installer from this site.
+              In-app updating was introduced in macOS 2.0.0. For macOS {RELEASE.version}, download the DMG from this site. Windows remains on {RELEASE.windowsVersion}.
             </p>
           </section>
 

@@ -8,19 +8,19 @@ import styles from "./GetStarted.module.css";
 const INSTALLERS = [
   {
     name: "macOS",
-    requirements: `Apple Silicon · macOS ${RELEASE.minMacOS}+`,
-    description: "Open the signed, notarized disk image and drag clide into Applications.",
+    requirements: `v${RELEASE.version} · Apple Silicon · macOS ${RELEASE.minMacOS}+`,
+    description: "Faster Whisper startup. Open the signed, notarized disk image and drag clide into Applications.",
     asset: RELEASE.dmg,
   },
   {
     name: "Windows",
-    requirements: "Windows x64 · WebView2",
+    requirements: `v${RELEASE.windowsVersion} · Windows x64 · WebView2`,
     description: "Run the setup file and choose a local Whisper or Parakeet model. This installer is unsigned.",
     asset: RELEASE.windows,
   },
   {
     name: "Windows with CUDA",
-    requirements: "Windows x64 · NVIDIA GPU · WebView2",
+    requirements: `v${RELEASE.windowsVersion} · Windows x64 · NVIDIA GPU · WebView2`,
     description: "Optional CUDA 13 acceleration for Whisper and Parakeet. Requires a compatible NVIDIA driver. This installer is unsigned.",
     asset: RELEASE.cuda,
   },
@@ -31,7 +31,7 @@ export function GetStarted() {
     <section className={`container ${styles.section}`} id="get-started" aria-labelledby="start-title">
       <SectionHead
         index="04"
-        label={`Download · v${RELEASE.version}`}
+        label="Download"
         titleId="start-title"
         title={<>Get clide <span className="serif">for your device.</span></>}
       />

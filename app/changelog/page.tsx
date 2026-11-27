@@ -15,9 +15,19 @@ export const metadata: Metadata = {
  */
 const RELEASES = [
   {
+    version: "2.1.3",
+    date: "27 November 2026",
+    tag: "Latest for macOS",
+    summary: "Whisper starts faster on Apple Silicon.",
+    changes: [
+      "Whisper already used Metal for inference. Clide now ships a precompiled default.metallib and loads it in place of compiling Metal shaders during the first model load.",
+      "On an M2 Pro, Metal library load fell from 11.3 s to about 0.001 s, and app model load fell from about 9.45 s to 0.98 s. Warm-up inference took about 0.91 s, and a later 7.8 s dictation took about 0.44 s to transcribe.",
+      "The Apple Silicon DMG is signed, notarized, and stapled. Windows installers remain on 2.1.2.",
+    ],
+  },
+  {
     version: "2.1.2",
     date: "27 November 2026",
-    tag: "Latest",
     summary: "Clide is available on Windows x64 with local Whisper and Parakeet.",
     changes: [
       "Adds a Windows x64 installer and an optional CUDA 13 build for compatible NVIDIA GPUs.",

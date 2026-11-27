@@ -23,3 +23,19 @@ developer vocabulary setting, or a customizable dashboard grid.
 
 _(Expand with module/crate breakdown, IPC boundary between Rust and React,
 and the provider adapter trait as the codebase solidifies.)_
+
+## Whisper cold start on Apple Silicon
+
+Whisper already used Metal for inference. Clide 2.1.3 ships a precompiled
+`default.metallib` and loads it in place of compiling the Metal shader source
+at runtime. The measurements below are from an M2 Pro.
+
+| Measurement | Time |
+|---|---|
+| Metal library load | 11.3 s → about 0.001 s |
+| App model load | About 9.45 s → about 0.98 s |
+| Warm-up inference | About 0.91 s |
+| Transcription of a later 7.8 s dictation | About 0.44 s |
+
+The first two rows measure cold start. The last two are separate inference
+measurements. See the [Clide 2.1.3 release notes](https://github.com/staraepp/clide_stt/releases/tag/v2.1.3).
