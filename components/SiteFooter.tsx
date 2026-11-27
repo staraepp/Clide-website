@@ -12,7 +12,7 @@ export function SiteFooter() {
             <Logo size={22} />
             clide
           </span>
-          <p>Free, open-source dictation for macOS. Hold a shortcut, speak, and it types.</p>
+          <p>Free, open-source dictation for macOS and Windows. Hold a shortcut, speak, and it types.</p>
           <p className={styles.legal}>MIT licensed · © 2026 staraepp</p>
         </div>
 

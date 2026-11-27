@@ -1,9 +1,9 @@
 # clide — website
 
 Marketing site for **clide**, an open-source, 100% local, system-wide
-dictation app for macOS. Built with Next.js 16 (App Router), React 19 and
+dictation app for macOS and Windows. Built with Next.js 16 (App Router), React 19 and
 TypeScript, CSS Modules, [Motion](https://motion.dev) for animation, and a
-WebGL2 contour-line shader behind the hero.
+WebGL2 wave shader behind the hero.
 
 This repo is the **website only**. The clide app itself lives at
 [staraepp/clide_stt](https://github.com/staraepp/clide_stt).
@@ -52,10 +52,8 @@ docs/                project documentation source (see docs/README.md)
 
 ## Editing
 
-- **Releasing a new build:** publish the notarized DMG on the GitHub release,
-  then update `RELEASE` in `lib/site.ts` (version, DMG URL, size, SHA-256).
-  The site links to the release asset, so no binary lives in this repo. Set
-  `dmg: null` to show a "build from source" call to action between releases.
+- **Releasing a new build:** publish the installers on GitHub Releases, then update
+  `RELEASE` in `lib/site.ts` with each installer’s URL, size, and SHA-256.
 - **Motion:** scroll-linked effects use `motion/react`. Everything respects
   `prefers-reduced-motion` (the shader shows a still frame, demos stop, and
   scroll-pinned scenes stay readable).

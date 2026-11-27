@@ -8,11 +8,7 @@ in vec2 aPos;
 void main() { gl_Position = vec4(aPos, 0.0, 1.0); }
 `;
 
-/*
- * Domain-warped fBm drawn as thin monochrome isolines. `uEnergy` (0..1)
- * strengthens and quickens the field while a dictation is live, and the
- * pointer gently bends the contours. Dithered so dark tones never band.
- */
+// Waves-inspired flow field. Dictation lifts the colour and speeds up the drift.
 const FRAGMENT = `#version 300 es
 precision highp float;
 uniform vec2 uRes;
@@ -56,31 +52,27 @@ float fbm(vec2 p, int octaves) {
 
 void main() {
   vec2 uv = gl_FragCoord.xy / uRes;
-  vec2 p = (gl_FragCoord.xy - 0.5 * uRes) / uRes.y;
-  float t = uTime * (0.03 + 0.05 * uEnergy);
+  float t = uTime * (0.09 + 0.08 * uEnergy);
+  vec2 pointerDelta = (uv - uPointer) * vec2(uRes.x / uRes.y, 1.0);
+  float pointerLift = exp(-dot(pointerDelta, pointerDelta) * 14.0) * uPointerPower;
 
-  vec2 m = (uPointer - 0.5) * vec2(uRes.x / uRes.y, 1.0);
-  float d = distance(p, m);
+  float flow = uv.y + uv.x * 0.22;
+  flow += sin(uv.x * 5.5 + t) * 0.12;
+  flow += (fbm(uv * vec2(2.4, 3.2) + vec2(t * 0.3, 0.0), uOctaves) - 0.45) * 0.28;
+  flow += pointerLift * 0.055;
 
-  vec2 q = vec2(fbm(p * 1.1 + vec2(0.0, t), 2), fbm(p * 1.1 + vec2(5.2, 1.3) - t, 2));
-  vec2 w = p + 0.9 * q + (p - m) * exp(-d * 3.0) * 0.28 * uPointerPower;
-  float f = fbm(w * 1.5 + vec2(t * 0.6, -t * 0.4), uOctaves);
+  float swellDistance = (flow - 0.79) / 0.23;
+  float crestDistance = (flow - 0.91) / 0.09;
+  float swell = exp(-swellDistance * swellDistance);
+  float crest = exp(-crestDistance * crestDistance);
+  float reach = mix(0.43, 1.0, smoothstep(0.0, 0.92, uv.x));
+  float fadeB = uFadeBottom > 0.0 ? smoothstep(0.0, uFadeBottom, uv.y) : 1.0;
+  float fadeT = uFadeTop > 0.0 ? 1.0 - smoothstep(1.0 - uFadeTop, 1.0, uv.y) : 1.0;
 
-  // Thin isolines of the field, like a topographic map or an oscilloscope trace.
-  float bands = f * 16.0;
-  float dist = abs(fract(bands) - 0.5);
-  float aa = fwidth(bands) * 1.4 + 0.015;
-  float line = 1.0 - smoothstep(0.0, aa, dist);
-
-  vec3 base = vec3(0.031, 0.031, 0.039);
-  float strength = 0.075 + 0.2 * uEnergy + 0.1 * exp(-d * 4.0) * uPointerPower;
-  vec3 col = base + vec3(line * strength);
-
-  float fadeB = smoothstep(0.0, uFadeBottom, uv.y);
-  float fadeT = 1.0 - smoothstep(1.0 - uFadeTop, 1.0, uv.y);
-  col = mix(base, col, fadeB * fadeT);
-
-  col += (hash(gl_FragCoord.xy + fract(uTime)) - 0.5) / 255.0;
+  vec3 base = vec3(8.0, 8.0, 10.0) / 255.0;
+  vec3 blue = vec3(0.055, 0.18, 0.34) * swell + vec3(0.07, 0.17, 0.22) * crest;
+  vec3 col = base + blue * reach * fadeB * fadeT * (0.82 + uEnergy * 0.35);
+  col += (hash(gl_FragCoord.xy) - 0.5) / 255.0;
   outColor = vec4(col, 1.0);
 }
 `;

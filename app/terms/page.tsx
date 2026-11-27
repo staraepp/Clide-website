@@ -62,7 +62,7 @@ export default function TermsPage() {
 
         <h2>Third-party services</h2>
         <p>
-          clide runs on your Mac. When you press Install on a model, it is
+          clide processes dictation on your device. When you press Install on a model, it is
           downloaded from Hugging Face, and the app checks GitHub for new
           releases. Those services are not operated by us, and their terms and
           privacy policies apply. Preview builds up to 0.1.2 also include
@@ -76,15 +76,13 @@ export default function TermsPage() {
         <h2>Downloads</h2>
         <p>
           Builds are provided with a SHA-256 checksum so you can confirm the
-          file you received. Releases from 2.0.0 on are signed and notarized by
-          Apple. Version 0.1.2 is not, so macOS can show a warning on first
-          launch. You can also build the app yourself from
+          file you received. The current macOS installer is signed and notarized by Apple. The Windows installers and the macOS 0.1.2 preview may trigger operating system warnings. You can also build the app yourself from
           source.
         </p>
 
         <h2>Updates</h2>
         <p>
-          From version 2.0.0, clide checks for new releases and can install one
+          Starting with macOS version 2.0.0, clide checks for new releases and can install supported updates
           when you press Update. Updates are optional and are verified against
           the project&apos;s signature key before installing. An update may
           change how the software behaves, and these terms apply to the version

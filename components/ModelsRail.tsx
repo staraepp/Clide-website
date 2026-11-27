@@ -98,7 +98,7 @@ export function ModelsRail() {
           }
         >
           <p>
-            Browse the catalogue, read how each one will run on your Mac, and press
+            Browse the catalogue, read how each one will run on your device, and press
             Install on the ones you want. Nothing is downloaded until you do, and you
             can remove any model later.
           </p>
@@ -149,7 +149,7 @@ export function ModelsRail() {
 
           <p className={`container ${styles.note}`}>
             Ratings shown are for an Apple M2 Pro with 16 GB. clide reads your own chip
-            and memory and rates every model for your Mac.
+            and memory and rates each model for your hardware.
           </p>
         </div>
       </div>

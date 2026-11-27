@@ -6,7 +6,7 @@ import { ISSUES_URL, REPO_URL } from "@/lib/site";
 export const metadata: Metadata = {
   title: "Privacy Policy — clide",
   description:
-    "What the clide website and app do with your data: no accounts, no analytics, no cookies, and dictation that stays on your Mac unless you choose a cloud provider.",
+    "What the clide website and app do with your data: no accounts, no analytics, no cookies, and dictation that stays on your device.",
 };
 
 export default function PrivacyPage() {
@@ -15,7 +15,7 @@ export default function PrivacyPage() {
       eyebrow="Legal"
       title="Privacy Policy"
       updated="Last updated 5 October 2026"
-      intro="The short version: clide runs entirely on your Mac. There are no accounts, no analytics, no tracking, and your audio is never uploaded."
+      intro="The short version: clide processes dictation on your device. There are no accounts, no analytics, no tracking, and your audio is never uploaded."
     >
       <div className="prose">
         <h2>Who this covers</h2>
@@ -23,7 +23,7 @@ export default function PrivacyPage() {
           clide is free, open-source software maintained by the{" "}
           <a href="https://github.com/staraepp" target="_blank" rel="noreferrer">staraepp</a>{" "}
           project. This policy covers two separate things: this website
-          (clide.staraep.fun), and the clide app that runs on your Mac. It
+          (clide.staraep.fun), and the clide app for macOS and Windows. It
           does not cover the third-party services you may choose to connect.
         </p>
 
@@ -37,8 +37,7 @@ export default function PrivacyPage() {
           </li>
           <li>Fonts are bundled with the site, so your browser makes no requests to font providers.</li>
           <li>
-            The pages and the app download are delivered by our hosting
-            provider. Like every web host, it processes technical request data
+            Our hosting provider delivers the website. GitHub delivers the current installers. Our web host processes technical request data
             (such as your IP address, browser type and the page requested) to
             deliver the site and keep it secure. We do not use that data to
             identify or profile visitors, and we have no access to your
@@ -52,13 +51,13 @@ export default function PrivacyPage() {
 
         <h2>The clide app</h2>
         <p>
-          The app runs on your Mac. There is no clide account and no clide
+          The app processes dictation on your device. There is no clide account and no clide
           server, and the app contains no analytics, telemetry or crash
           reporting. You can read the source in the{" "}
           <a href={REPO_URL} target="_blank" rel="noreferrer">GitHub repository</a>.
         </p>
 
-        <h3>What is stored on your Mac</h3>
+        <h3>What is stored on your device</h3>
         <ul>
           <li>
             <strong>History:</strong> the text of your transcripts, with the
@@ -113,15 +112,15 @@ export default function PrivacyPage() {
               <td>The app asks GitHub for the latest release information, so it can tell you when an update exists. GitHub receives the request like any web request, including your IP address.</td>
             </tr>
             <tr>
-              <td>You press Update</td>
+              <td>You press Update on macOS</td>
               <td>The new version is downloaded from GitHub, checked against a signature key built into the app, and only then installed. Nothing is ever installed without that button press.</td>
             </tr>
             <tr>
               <td>You turn on the Local API (off by default)</td>
-              <td>Nothing is sent anywhere. clide listens on your Mac&apos;s loopback address (127.0.0.1) only, so just apps on the same Mac can reach it, and only with the token. It makes no outbound connections. Uploaded audio and transcripts are not logged, and uploaded audio is deleted when the request ends.</td>
+              <td>Nothing is sent anywhere. clide listens on the loopback address (127.0.0.1) only, so just apps on the same device can reach it, and only with the token. It makes no outbound connections. Uploaded audio and transcripts are not logged, and uploaded audio is deleted when the request ends.</td>
             </tr>
             <tr>
-              <td>You use Rewrite with Ollama</td>
+              <td>You use Rewrite with Ollama on macOS</td>
               <td>Your transcript goes to Ollama running on your own Mac, over the loopback address (127.0.0.1) only. It does not travel over the internet.</td>
             </tr>
           </tbody>
@@ -140,7 +139,7 @@ export default function PrivacyPage() {
         </p>
 
         <h3>Permissions</h3>
-        <p>macOS asks for each permission when the feature first needs it.</p>
+        <p>Clide needs microphone access on both platforms. macOS also uses separate Accessibility and Speech Recognition permissions.</p>
         <ul>
           <li><strong>Microphone:</strong> to record while you hold the shortcut.</li>
           <li><strong>Accessibility:</strong> to type the transcript into the app you were using.</li>
@@ -156,7 +155,7 @@ export default function PrivacyPage() {
         <p>
           Because we do not collect or hold your personal data, there is
           nothing on our side to access, correct or delete. Everything the app
-          keeps is on your Mac, and you control it: you can delete history
+          keeps is on your device, and you control it: you can delete history
           entries, remove models, uninstall the app, and delete its data
           folder at any time. For data held by third parties such as our hosting provider,
           Hugging Face or GitHub, contact them directly under their policies. If

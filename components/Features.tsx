@@ -80,7 +80,7 @@ function EngineList() {
         >
           <span className={styles.engineName}>{engine.name}</span>
           <span className={styles.engineNote}>{engine.note}</span>
-          <span className={styles.tag}>On your Mac</span>
+          <span className={styles.tag}>On-device</span>
         </motion.li>
       ))}
     </ul>
@@ -318,8 +318,8 @@ export function Features() {
         <BentoCard
           className={styles.engines5}
           eyebrow="Engines"
-          title="Three engines, all on your Mac"
-          description="Your audio is transcribed on this machine and never uploaded. No account, no API key, nothing to sign up for."
+          title="Local speech recognition"
+          description="Whisper and Parakeet run on Mac and Windows. Apple Speech is built into macOS."
           delay={0.08}
         >
           <EngineList />
@@ -340,8 +340,8 @@ export function Features() {
         <BentoCard
           className={styles.third}
           eyebrow="Insertion"
-          title="Lands in any app"
-          description="Four steps, tried in order, until the text is really there."
+          title="Types into the focused app"
+          description="The Mac uses the steps below. Windows sends Unicode keystrokes. The transcript is available to paste if insertion fails."
           delay={0.08}
         >
           <InsertCascade />
@@ -379,7 +379,7 @@ export function Features() {
           className={styles.half}
           eyebrow="History"
           title="Everything you said, searchable"
-          description="A local SQLite database with full-text search. Nothing leaves your Mac."
+          description="A local SQLite database with full-text search. Your transcripts stay on your device."
           delay={0.08}
         >
           <HistorySearch />

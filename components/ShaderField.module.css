@@ -12,11 +12,12 @@
   image-rendering: auto;
 }
 
-/* Used when WebGL2 is unavailable: a static set of contour-like rings. */
 .fallback {
   position: absolute;
   inset: 0;
   background:
-    repeating-radial-gradient(circle at 25% 35%, transparent 0 34px, rgba(255, 255, 255, 0.05) 35px 36px),
+    radial-gradient(90% 30% at 83% 24%, #163a60, transparent 90%),
+    radial-gradient(85% 24% at 33% 48%, #102743, transparent 90%),
     var(--bg);
+  mask-image: linear-gradient(transparent, black 18%, black 65%, transparent);
 }
