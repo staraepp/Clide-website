@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { CodeBlock } from "@/components/CodeBlock";
 import { DocsNav } from "@/components/DocsNav";
 import { PageShell } from "@/components/PageShell";
-import { ISSUES_URL, LEGACY, RELEASE, RELEASES_URL } from "@/lib/site";
+import { ISSUES_URL, LEGACY, RELEASE } from "@/lib/site";
 import styles from "./docs.module.css";
 
 export const metadata: Metadata = {
@@ -40,7 +41,7 @@ export default function DocsPage() {
       eyebrow="Documentation"
       title="Docs"
       width="wide"
-      updated={`For clide ${RELEASE.version} · Apple Silicon · macOS ${RELEASE.minMacOS} or later`}
+      updated={`For clide ${RELEASE.version} · macOS and Windows`}
     >
       <div className={styles.layout}>
         <DocsNav sections={SECTIONS} />
@@ -49,13 +50,13 @@ export default function DocsPage() {
           <section id="what-it-is">
             <h2>What clide is</h2>
             <p>
-              clide is a dictation utility for macOS. You hold a shortcut, speak,
+              clide is a dictation utility for macOS and Windows. You hold a shortcut, speak,
               and the text appears in whatever app you were already typing in.
               Rust owns the microphone, the shortcut, transcription, and insertion;
               React only draws the window.
             </p>
             <p>
-              It is free and MIT licensed, and everything runs on your Mac. There is
+              It is free and MIT licensed, and transcription runs on your device. There is
               no account, no cloud, and no API key to manage. Your audio is never
               uploaded.
             </p>
@@ -63,37 +64,33 @@ export default function DocsPage() {
 
           <section id="install">
             <h2>Install</h2>
-            {RELEASE.dmg ? (
-              <>
-                <p>
-                  Download the DMG from this site or from{" "}
-                  <a href={RELEASES_URL} target="_blank" rel="noreferrer">the releases page</a>{" "}
-                  and drag clide into Applications. It runs on Apple Silicon Macs with macOS{" "}
-                  {RELEASE.minMacOS} or later.
-                </p>
-                <h3>Check the download</h3>
-                <p>Compare the file&apos;s checksum with the one published on the homepage:</p>
-                <CodeBlock code={`shasum -a 256 ~/Downloads/${RELEASE.dmg.file}`} />
-              </>
-            ) : (
-              <>
-                <p>
-                  Version {RELEASE.version} is merged on GitHub. Its signed, notarized DMG is being
-                  published on{" "}
-                  <a href={RELEASES_URL} target="_blank" rel="noreferrer">the releases page</a>.
-                  Until then, build it from source. It needs macOS {RELEASE.minMacOS} or later.
-                </p>
-              </>
-            )}
+            <h3>macOS</h3>
+            <p>
+              Open the <a href={RELEASE.dmg.url}>DMG</a> and drag clide into Applications.
+              You need Apple Silicon and macOS {RELEASE.minMacOS} or later.
+            </p>
+            <CodeBlock code={`shasum -a 256 ~/Downloads/${RELEASE.dmg.file}`} />
+            <h3>Windows</h3>
+            <p>
+              Run the <a href={RELEASE.windows.url}>Windows x64 installer</a> on a PC with
+              WebView2. Choose Whisper or Parakeet in clide and download a model to get started.
+              Windows supports Verbatim and Polished. Apple Speech, live typing, Rewrite, and the macOS Accessibility steps below are Mac-specific.
+            </p>
+            <p>
+              The optional <a href={RELEASE.cuda.url}>CUDA installer</a> requires a compatible
+              NVIDIA driver and GPU. The release notes describe its signing and testing status.
+            </p>
+            <CodeBlock code={`Get-FileHash "$HOME/Downloads/${RELEASE.windows.file}" -Algorithm SHA256`} />
+            <p>Compare the result with the installer checksum in the <Link href="/#get-started">download section</Link>.</p>
             <div className="callout">
               <p>
-                Releases from {RELEASE.version} on are signed with a Developer ID certificate and
-                notarized by Apple, so macOS opens them without a Gatekeeper warning. The older{" "}
+                The current macOS installer is signed with a Developer ID certificate and
+                notarized by Apple. The older{" "}
                 {LEGACY.version} preview is not notarized, still contains the removed cloud engines,
                 and has to be updated by hand.
               </p>
             </div>
-            <h3>Build from source</h3>
+            <h3>Build from source on macOS</h3>
             <CodeBlock code={BUILD} />
             <p>
               Use the bundled app rather than <code>npm run app</code>. Permissions are
@@ -122,7 +119,7 @@ export default function DocsPage() {
           <section id="engines">
             <h2>Engines</h2>
             <p>
-              Three transcription engines, all running on your Mac. Switching between
+              Whisper and Parakeet run locally on either platform. Apple Speech is available on macOS. Switching between
               them never changes anything else about your setup.
             </p>
             <table>
@@ -255,7 +252,8 @@ export default function DocsPage() {
               insertion is attempted, so if everything else fails your words are still
               one paste away.
             </p>
-            <p>Then clide tries, in order:</p>
+            <p>On Windows, clide sends Unicode keystrokes to the focused app. If insertion fails, paste from the clipboard or copy the transcript from History.</p>
+            <p>On macOS, clide tries, in order:</p>
             <ul>
               <li><strong>Accessibility</strong>: writes straight into the focused control, and <em>verifies</em> the text actually changed rather than trusting the API&apos;s success code.</li>
               <li><strong>Typing</strong>: sends the text as Unicode keystrokes. This is what reaches Electron and Chromium apps.</li>
@@ -266,12 +264,11 @@ export default function DocsPage() {
           <section id="updates">
             <h2>Updates</h2>
             <p>
-              Once a day, clide checks GitHub for a newer release. It never installs anything on
+              On macOS, clide checks GitHub daily for a newer release. It never installs anything on
               its own: when one exists, the Update button appears, and only pressing it downloads
               the new version. The download is verified against a public key built into the app,
               so a package that was not signed by the project is rejected wherever it came from.
-              Version {RELEASE.version} is the first that can update itself. Earlier installs
-              update by hand.
+              In-app updating was introduced in macOS 2.0.0. For 2.1.2, download the installer from this site.
             </p>
           </section>
 
@@ -279,8 +276,8 @@ export default function DocsPage() {
             <h2>Privacy</h2>
             <ul>
               <li>Recordings are temporary and deleted once the transcription resolves. History stores text, never audio.</li>
-              <li>History is a local SQLite database on your Mac, searchable with full-text search.</li>
-              <li>Your audio never leaves your Mac, and there is no clide server and no account.</li>
+              <li>History is a local SQLite database on your device, searchable with full-text search.</li>
+              <li>Your audio stays on your device, and there is no clide server and no account.</li>
               <li>The only network requests are the model downloads you start, the daily check for new releases, and an update you choose to install.</li>
             </ul>
             <p>

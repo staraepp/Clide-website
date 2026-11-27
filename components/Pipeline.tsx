@@ -16,7 +16,7 @@ import styles from "./Pipeline.module.css";
 const STEPS = [
   { name: "Shortcut", detail: "One key. Hold to talk or press to toggle.", Visual: ShortcutVisual },
   { name: "Capture", detail: "Rust owns the microphone. The HUD never steals focus.", Visual: CaptureVisual },
-  { name: "Transcribe", detail: "Apple Speech, Whisper or Parakeet, running on your Mac.", Visual: TranscribeVisual },
+  { name: "Transcribe", detail: "Local Whisper and Parakeet, plus Apple Speech on Mac.", Visual: TranscribeVisual },
   { name: "Process", detail: "Verbatim, Polished, or an on-device Rewrite.", Visual: ProcessVisual },
   { name: "Insert", detail: "Straight into the app you were typing in.", Visual: InsertVisual },
   { name: "History", detail: "Saved as text in a local, searchable database.", Visual: HistoryVisual },

@@ -25,9 +25,9 @@ const instrumentSerif = Instrument_Serif({
 });
 
 export const metadata: Metadata = {
-  title: "clide — open-source dictation for Mac",
+  title: "clide — open-source dictation for Mac and Windows",
   description:
-    "clide is free, open-source system-wide dictation for Mac. Three on-device engines, 39 local models you install yourself, and no account, cloud, or API keys.",
+    "clide is free, open-source system-wide dictation for Mac and Windows. Run local speech recognition without an account or API keys.",
 };
 
 export const viewport: Viewport = {

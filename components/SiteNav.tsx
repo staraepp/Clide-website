@@ -96,9 +96,9 @@ export function SiteNav() {
             >
               <GithubIcon size={17} />
             </a>
-            <a className="btn btn-primary btn-sm" href={DOWNLOAD.href} download={DOWNLOAD.download || undefined}>
+            <a className="btn btn-primary btn-sm" href={DOWNLOAD.href}>
               <DownloadIcon size={14} />
-              {DOWNLOAD.download ? "Download" : "Get 2.0"}
+              {DOWNLOAD.label}
             </a>
             <button
               ref={menuButton}
@@ -146,22 +146,16 @@ export function SiteNav() {
               </button>
             </div>
             <nav className={styles.sheetLinks} aria-label="Mobile">
-              {[...LINKS, { href: DOWNLOAD.href, label: DOWNLOAD.download ? "Download" : "Get clide 2.0" }].map((link, index) => (
+              {[...LINKS, { href: DOWNLOAD.href, label: DOWNLOAD.label }].map((link, index) => (
                 <motion.div
                   key={link.href}
                   initial={{ opacity: 0, y: 16 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.05 + index * 0.06, duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
                 >
-                  {link.href === DOWNLOAD.href && DOWNLOAD.download ? (
-                    <a href={link.href} download onClick={() => setOpen(false)}>
-                      {link.label}
-                    </a>
-                  ) : (
-                    <Link href={link.href} onClick={() => setOpen(false)}>
-                      {link.label}
-                    </Link>
-                  )}
+                  <Link href={link.href} onClick={() => setOpen(false)}>
+                    {link.label}
+                  </Link>
                 </motion.div>
               ))}
             </nav>

@@ -7,7 +7,7 @@ import {
   useTransform,
 } from "motion/react";
 import { useCallback, useRef, useState } from "react";
-import { DOWNLOAD, RELEASE, REPO_URL } from "@/lib/site";
+import { RELEASE, REPO_URL } from "@/lib/site";
 import { AppWindow } from "./app-window/AppWindow";
 import type { Phase } from "./app-window/demo-data";
 import { DownloadIcon, GithubIcon } from "./Icons";
@@ -59,9 +59,9 @@ export function Hero() {
             animate={{ opacity: 1 }}
             transition={{ duration: 1, delay: 0.1 }}
           >
-            <span>clide / dictation for macOS</span>
+            <span>clide / dictation for Mac and Windows</span>
             <span>
-              v{RELEASE.version} · MIT · Apple Silicon · macOS {RELEASE.minMacOS}+
+              v{RELEASE.version} · MIT · On-device
             </span>
           </motion.p>
 
@@ -79,7 +79,7 @@ export function Hero() {
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 1.1, delay, ease: EASE }}
                     >
-                      {word.text}
+                      {word.text}{" "}
                     </motion.span>
                   );
                 })}
@@ -95,7 +95,7 @@ export function Hero() {
               transition={{ duration: 1, delay: 0.7, ease: EASE }}
             >
               Hold a shortcut, speak, and clide types it into whatever app you
-              were in. Everything runs on your Mac: no account, no cloud, no keys.
+              were in. Transcription runs on your device, with no account or API key.
             </motion.p>
 
             <motion.div
@@ -104,9 +104,13 @@ export function Hero() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, delay: 0.82, ease: EASE }}
             >
-              <a className="btn btn-primary" href={DOWNLOAD.href} download={DOWNLOAD.download || undefined}>
+              <a className={`btn btn-primary ${styles.fill}`} href={RELEASE.dmg.url}>
+                <span aria-hidden="true">↘</span>
+                Download for Mac
+              </a>
+              <a className={`btn btn-ghost ${styles.glass}`} href={RELEASE.windows.url}>
                 <DownloadIcon />
-                {DOWNLOAD.label}
+                Download for Windows
               </a>
               <a className="btn btn-ghost" href={REPO_URL} target="_blank" rel="noreferrer">
                 <GithubIcon />

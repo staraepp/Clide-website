@@ -18,7 +18,7 @@ export function OpenSourceBand() {
           Issues, pull requests and ideas are welcome. Every bit of help counts.
         </p>
         <div className={styles.ctas}>
-          <a className="btn btn-primary" href={DOWNLOAD.href} download={DOWNLOAD.download || undefined}>
+          <a className="btn btn-primary" href={DOWNLOAD.href}>
             <DownloadIcon />
             {DOWNLOAD.label}
           </a>

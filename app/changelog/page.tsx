@@ -6,7 +6,7 @@ import styles from "./changelog.module.css";
 
 export const metadata: Metadata = {
   title: "Changelog — clide",
-  description: "What changed in each release of clide, the open-source macOS dictation app.",
+  description: "What changed in each release of clide, the open-source dictation app.",
 };
 
 /**
@@ -15,9 +15,27 @@ export const metadata: Metadata = {
  */
 const RELEASES = [
   {
+    version: "2.1.2",
+    date: "27 November 2026",
+    tag: "Latest",
+    summary: "Clide is available on Windows x64 with local Whisper and Parakeet.",
+    changes: [
+      "Adds a Windows x64 installer and an optional CUDA 13 build for compatible NVIDIA GPUs.",
+      "Models download when selected. The Apple Silicon DMG remains signed and notarized.",
+    ],
+  },
+  {
+    version: "2.1.1",
+    date: "7 October 2026",
+    summary: "Add custom spellings in Dictionary and choose whether clide lowers other audio while you dictate.",
+    changes: [
+      "Keep the spellings of names and jargon consistent. Clide can learn words locally, and those words affect output only after you keep them.",
+      "Turn volume lowering on or off in Settings.",
+    ],
+  },
+  {
     version: "2.1.0",
     date: "5 October 2026",
-    tag: "Latest",
     summary:
       "An optional Local API lets other apps on your Mac use clide for transcription and follow its recording state.",
     changes: [
